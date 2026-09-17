@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Axlight｜アクスライト 鍼灸・整体院</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    Meiryo,
+    sans-serif;
+  background:#07111f;
+  color:#ffffff;
+  line-height:1.8;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* ---------- ヘッダー ---------- */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+  background:rgba(5,14,27,.94);
+  border-bottom:1px solid rgba(100,190,255,.25);
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.logo span{
+  color:#59bfff;
+}
+
+nav a{
+  margin-left:15px;
+  font-size:13px;
+  color:#c9e8ff;
+}
+
+/* ---------- ファーストビュー ---------- */
+
+.hero{
+  min-height:78vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:80px 24px;
+  background:
+    radial-gradient(circle at 50% 30%,
+    rgba(32,154,255,.28),
+    transparent 38%),
+    linear-gradient(180deg,#091a30,#07111f);
+}
+
+.hero-inner{
+  max-width:760px;
+}
+
+.hero-small{
+  color:#6cc8ff;
+  font-weight:bold;
+  letter-spacing:3px;
+  margin-bottom:12px;
+}
+
+.hero h1{
+  font-size:clamp(38px,11vw,76px);
+  letter-spacing:5px;
+  line-height:1.1;
+  margin-bottom:15px;
+}
+
+.hero h1 span{
+  color:#55bcff;
+}
+
+.hero h2{
+  font-size:clamp(18px,5vw,27px);
+  font-weight:500;
+  margin-bottom:22px;
+}
+
+.hero p{
+  color:#c5d7e7;
+  font-size:15px;
+  margin-bottom:32px;
+}
+
+.btn{
+  display:inline-block;
+  padding:15px 30px;
+  margin:6px;
+  border-radius:999px;
+  font-weight:bold;
+}
+
+.btn-main{
+  background:linear-gradient(135deg,#168be0,#66caff);
+  color:#00101c;
+}
+
+.btn-sub{
+  border:1px solid #4ba9e7;
+  color:#9ddcff;
+}
+
+/* ---------- 共通 ---------- */
+
+section{
+  padding:72px 22px;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-title small{
+  color:#5dc2ff;
+  letter-spacing:3px;
+  font-weight:bold;
+}
+
+.section-title h2{
+  font-size:29px;
+  margin-top:5px;
+}
+
+/* ---------- コンセプト ---------- */
+
+.concept{
+  background:#0b1726;
+  text-align:center;
+}
+
+.concept p{
+  max-width:700px;
+  margin:auto;
+  color:#d3e0ea;
+}
+
+/* ---------- メニュー ---------- */
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.menu-card{
+  padding:22px 15px;
+  background:linear-gradient(145deg,#0e2034,#0a1726);
+  border:1px solid rgba(74,176,240,.25);
+  border-radius:14px;
+}
+
+.menu-card h3{
+  color:#7dd0ff;
+  font-size:17px;
+  margin-bottom:5px;
+}
+
+.menu-card p{
+  color:#aebfcd;
+  font-size:13px;
+}
+
+/* ---------- スタッフ ---------- */
+
+.staff{
+  background:#0b1726;
+}
+
+.staff-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.staff-card{
+  padding:28px 20px;
+  border-radius:16px;
+  background:#081421;
+  border-top:3px solid #46b9ff;
+}
+
+.staff-role{
+  color:#64c6ff;
+  font-size:13px;
+  letter-spacing:2px;
+}
+
+.staff-card h3{
+  font-size:27px;
+  margin:5px 0 15px;
+}
+
+.staff-card p{
+  color:#bdccd7;
+  font-size:14px;
+}
+
+/* ---------- 営業案内 ---------- */
+
+.info-box{
+  background:#0d1d30;
+  border:1px solid rgba(79,188,255,.3);
+  border-radius:18px;
+  padding:28px 20px;
+}
+
+.info-row{
+  padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.info-row:last-child{
+  border-bottom:none;
+}
+
+.info-row strong{
+  display:block;
+  color:#68c7ff;
+  margin-bottom:3px;
+}
+
+/* ---------- LINE ---------- */
+
+.reserve{
+  text-align:center;
+  background:
+    linear-gradient(145deg,#07314b,#071521);
+}
+
+.reserve-note{
+  max-width:700px;
+  margin:0 auto 25px;
+  padding:20px;
+  background:rgba(0,0,0,.25);
+  border-radius:14px;
+  text-align:left;
+}
+
+.reserve-note strong{
+  color:#73d0ff;
+}
+
+.line-btn{
+  display:inline-block;
+  background:#20c866;
+  color:#fff;
+  padding:16px 34px;
+  border-radius:999px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+/* ---------- フッター ---------- */
+
+footer{
+  text-align:center;
+  padding:35px 20px 90px;
+  background:#040a11;
+  color:#758a9a;
+  font-size:12px;
+}
+
+/* ---------- スマホ固定予約 ---------- */
+
+.fixed-reserve{
+  position:fixed;
+  left:15px;
+  right:15px;
+  bottom:15px;
+  z-index:99;
+  text-align:center;
+}
+
+.fixed-reserve a{
+  display:block;
+  padding:14px;
+  background:linear-gradient(135deg,#168ddd,#65caff);
+  color:#00111e;
+  border-radius:14px;
+  font-weight:800;
+  box-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+
+@media(max-width:650px){
+
+  nav{
+    display:none;
+  }
+
+  .menu-grid,
+  .staff-grid{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:60px 18px;
+  }
+
+  .hero{
+    min-height:75vh;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Ax<span>light</span>
+</div>
+
+<nav>
+<a href="#concept">当院について</a>
+<a href="#menu">メニュー</a>
+<a href="#staff">スタッフ</a>
+<a href="#access">店舗情報</a>
+<a href="#reserve">予約</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+<div class="hero-inner">
+
+<div class="hero-small">
+ACUPUNCTURE × BODY CARE
+</div>
+
+<h1>
+Ax<span>light</span>
+</h1>
+
+<h2>
+アクスライト 鍼灸・整体院
+</h2>
+
+<p>
+鍼灸と整体、それぞれの専門技術から<br>
+身体の状態に合わせた施術をご提案します。
+</p>
+
+<a class="btn btn-main" href="#reserve">
+予約方法を見る
+</a>
+
+<a class="btn btn-sub" href="#menu">
+施術メニュー
+</a>
+
+</div>
+
+</section>
+
+
+<section class="concept" id="concept">
+
+<div class="container">
+
+<div class="section-title">
+<small>ABOUT</small>
+<h2>身体と向き合う時間を。</h2>
+</div>
+
+<p>
+Axlightでは、現在感じている痛みや疲労だけを見るのではなく、
+身体全体の状態を確認しながら施術を行います。
+<br><br>
+鍼灸・整体・筋膜へのアプローチなど、
+それぞれの専門分野を活かし、
+一人ひとりの身体に合わせた施術を目指しています。
+</p>
+
+</div>
+
+</section>
+
+
+<section id="menu">
+
+<div class="container">
+
+<div class="section-title">
+<small>MENU</small>
+<h2>施術メニュー</h2>
+</div>
+
+<div class="menu-grid">
+
+<div class="menu-card">
+<h3>鍼灸</h3>
+<p>身体の状態に合わせた鍼灸施術</p>
+</div>
+
+<div class="menu-card">
+<h3>美容鍼</h3>
+<p>美容を目的とした鍼施術</p>
+</div>
+
+<div class="menu-card">
+<h3>全身鍼</h3>
+<p>全身の状態を確認しながら行う鍼施術</p>
+</div>
+
+<div class="menu-card">
+<h3>不妊治療鍼</h3>
+<p>身体の状態に合わせた鍼灸によるアプローチ</p>
+</div>
+
+<div class="menu-card">
+<h3>カッピング</h3>
+<p>吸い玉を使用した施術</p>
+</div>
+
+<div class="menu-card">
+<h3>整体</h3>
+<p>身体の状態を確認しながら行う全身調整</p>
+</div>
+
+<div class="menu-card">
+<h3>リフレクソロジー</h3>
+<p>足元から身体を整えるリラクゼーション</p>
+</div>
+
+<div class="menu-card">
+<h3>筋膜トリートメント</h3>
+<p>筋膜に着目した身体へのアプローチ</p>
+</div>
+
+<div class="menu-card">
+<h3>ホットストーン</h3>
+<p>温めたストーンを使用した施術</p>
+</div>
+
+<div class="menu-card">
+<h3>耳つぼピアス</h3>
+<p>耳つぼへの刺激を利用したメニュー</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="staff" id="staff">
+
+<div class="container">
+
+<div class="section-title">
+<small>STAFF</small>
+<h2>担当スタッフ</h2>
+</div>
+
+<div class="staff-grid">
+
+<div class="staff-card">
+
+<div class="staff-role">
+ACUPUNCTURE
+</div>
+
+<h3>兵永</h3>
+
+<p>
+鍼灸・美容鍼・全身鍼・不妊治療鍼など、
+鍼灸系メニューを担当します。
+</p>
+
+</div>
+
+
+<div class="staff-card">
+
+<div class="staff-role">
+BODY CARE
+</div>
+
+<h3>三島</h3>
+
+<p>
+整体・リフレクソロジー・
+筋膜トリートメント・ホットストーンなどを担当します。
+<br><br>
+指名料はありません。
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="access">
+
+<div class="container">
+
+<div class="section-title">
+<small>INFORMATION</small>
+<h2>店舗情報</h2>
+</div>
+
+<div class="info-box">
+
+<div class="info-row">
+<strong>院名</strong>
+Axlight ～アクスライト～ 鍼灸・整体院
+</div>
+
+<div class="info-row">
+<strong>住所</strong>
+〒436-0022<br>
+静岡県掛川市上張861-14<br>
+シェアサロン内
+</div>
+
+<div class="info-row">
+<strong>営業時間</strong>
+平日　10:00 ～ 24:00<br>
+土日　9:00 ～ 24:00
+</div>
+
+<div class="info-row">
+<strong>定休日</strong>
+なし
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="reserve" id="reserve">
+
+<div class="container">
+
+<div class="section-title">
+<small>RESERVATION</small>
+<h2>ご予約について</h2>
+</div>
+
+<div class="reserve-note">
+
+<strong>LINE予約をご利用のお客様へ</strong>
+
+<br><br>
+
+LINE予約ページは
+「天野整体」と共同で使用しています。
+
+<br><br>
+
+予約の際はメニューページを一番下まで進み、
+
+<br><br>
+
+<strong>
+【Axlight〜アクスライト〜鍼灸・整体院入口】
+</strong>
+
+<br><br>
+
+からお入りください。
+
+</div>
+
+<p>
+ご希望の施術メニュー・担当者をご確認のうえ、
+ご予約ください。
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+Axlight ～アクスライト～ 鍼灸・整体院
+<br>
+〒436-0022 静岡県掛川市上張861-14
+<br><br>
+
+© Axlight. All Rights Reserved.
+
+</footer>
+
+
+<div class="fixed-reserve">
+<a href="#reserve">
+LINE予約方法を確認する
+</a>
+</div>
+
+</body>
+</html>
