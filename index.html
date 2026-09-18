@@ -35,7 +35,7 @@ a{
 
 
 /* =========================
-   上部
+   HEADER
 ========================= */
 
 header{
@@ -53,18 +53,16 @@ header{
 
  padding:0 15px;
 
- background:rgba(255,255,255,.68);
+ background:rgba(255,255,255,.70);
 
  backdrop-filter:blur(15px);
  -webkit-backdrop-filter:blur(15px);
 
- border-bottom:
-  1px solid rgba(80,160,220,.08);
+ border-bottom:1px solid rgba(80,160,220,.08);
 }
 
 .headerReserve{
  padding:7px 16px;
-
  border-radius:30px;
 
  color:#fff;
@@ -88,6 +86,9 @@ header{
 
 /* =========================
    HERO
+
+   今回は水面画像そのものを
+   背景として使用
 ========================= */
 
 .hero{
@@ -96,70 +97,56 @@ header{
  min-height:100vh;
 
  padding:
-  76px 0
-  68px;
+  77px 0
+  58px;
 
  overflow:hidden;
 
  text-align:center;
 
  background:
-
-  radial-gradient(
-   ellipse at 50% 53%,
-   rgba(112,207,255,.20),
-   transparent 34%
-  ),
-
-  radial-gradient(
-   circle at 86% 29%,
-   rgba(177,229,255,.29),
-   transparent 25%
-  ),
-
-  radial-gradient(
-   circle at 7% 43%,
-   rgba(173,228,255,.21),
-   transparent 27%
-  ),
-
   linear-gradient(
    180deg,
-   #ffffff 0%,
-   #fbfdff 35%,
-   #eaf7ff 69%,
-   #f9fdff 100%
-  );
+   rgba(255,255,255,.98) 0%,
+   rgba(255,255,255,.94) 26%,
+   rgba(255,255,255,.50) 48%,
+   rgba(255,255,255,.05) 67%
+  ),
+  url("axlight-water-bg.png");
+
+ background-size:
+  auto,
+  cover;
+
+ background-position:
+  center,
+  center bottom;
+
+ background-repeat:
+  no-repeat;
 }
 
 
-/* 空間を横切る光 */
+/* 上側だけ白く馴染ませる */
 
 .hero::before{
  content:"";
 
  position:absolute;
+ z-index:1;
 
- left:-20%;
- right:-20%;
- top:225px;
+ top:0;
+ left:0;
+ right:0;
 
- height:290px;
+ height:310px;
 
  background:
-
   linear-gradient(
-   12deg,
-   transparent 29%,
-   rgba(87,185,255,.08) 43%,
-   transparent 52%
-  ),
-
-  linear-gradient(
-   -10deg,
-   transparent 34%,
-   rgba(255,255,255,.78) 45%,
-   transparent 54%
+   180deg,
+   rgba(255,255,255,.98),
+   rgba(255,255,255,.88) 58%,
+   rgba(255,255,255,0)
   );
 
  pointer-events:none;
@@ -167,7 +154,7 @@ header{
 
 
 /* =========================
-   ロゴ
+   Axlight ロゴ
 ========================= */
 
 .axlightLogo{
@@ -197,8 +184,8 @@ header{
 
  filter:
   drop-shadow(
-   0 8px 15px
-   rgba(20,85,155,.10)
+   0 7px 13px
+   rgba(25,75,130,.09)
   );
 }
 
@@ -319,252 +306,56 @@ header{
 
 
 /* =========================
-   水上ステージ
+   水上5面ステージ
 ========================= */
 
 .waterStage{
  position:relative;
- z-index:5;
+ z-index:10;
 
  width:100%;
- height:435px;
+ height:420px;
 
- margin-top:8px;
+ margin-top:3px;
 
  overflow:hidden;
 
- perspective:950px;
- perspective-origin:50% 41%;
+ perspective:1050px;
+ perspective-origin:50% 43%;
 
  touch-action:pan-y;
 }
 
 
-/* =========================
-   水面本体
+/*
+  水面上のごく薄い光だけ追加。
+  水そのものは描かない。
+*/
 
-   前回の「輪っか」ではなく
-   水面そのものを作る
-========================= */
-
-.waterPlane{
- position:absolute;
-
- left:-18%;
- width:136%;
-
- height:245px;
-
- bottom:-27px;
-
- overflow:hidden;
-
- border-radius:48% 48% 0 0 / 19% 19% 0 0;
-
- transform:
-  perspective(600px)
-  rotateX(59deg);
-
- transform-origin:
-  50% 100%;
-
- background:
-
-  radial-gradient(
-   ellipse at 50% 32%,
-   rgba(255,255,255,.88) 0%,
-   rgba(190,236,255,.47) 20%,
-   rgba(86,195,244,.24) 43%,
-   rgba(24,139,211,.13) 63%,
-   rgba(222,247,255,.20) 82%
-  ),
-
-  linear-gradient(
-   180deg,
-   rgba(215,246,255,.70),
-   rgba(72,185,235,.20) 44%,
-   rgba(221,247,255,.34)
-  );
-
- box-shadow:
-
-  inset 0 22px 40px
-  rgba(255,255,255,.48),
-
-  inset 0 -22px 48px
-  rgba(24,131,200,.13),
-
-  0 -12px 45px
-  rgba(103,207,255,.18);
-}
-
-
-/* =========================
-   立体的な波・山
-
-   明るい部分＝波の頂点
-   暗い部分＝波の谷
-========================= */
-
-.waterPlane::before{
- content:"";
-
- position:absolute;
-
- inset:-25% -12%;
-
- background:
-
-  radial-gradient(
-   ellipse at 20% 48%,
-   transparent 0 16%,
-   rgba(255,255,255,.48) 17%,
-   rgba(112,207,248,.20) 19%,
-   transparent 22%
-  ),
-
-  radial-gradient(
-   ellipse at 50% 42%,
-   transparent 0 20%,
-   rgba(255,255,255,.64) 21%,
-   rgba(71,177,230,.24) 23%,
-   rgba(13,113,183,.11) 25%,
-   transparent 28%
-  ),
-
-  radial-gradient(
-   ellipse at 78% 51%,
-   transparent 0 17%,
-   rgba(255,255,255,.46) 18%,
-   rgba(87,193,239,.20) 20%,
-   transparent 23%
-  ),
-
-  radial-gradient(
-   ellipse at 39% 72%,
-   transparent 0 11%,
-   rgba(255,255,255,.38) 12%,
-   rgba(41,155,217,.16) 14%,
-   transparent 17%
-  );
-
- filter:
-  blur(1.5px);
-
- transform:
-  scaleY(.82);
-
- animation:
-  waterBreath 7s
-  ease-in-out
-  infinite alternate;
-}
-
-
-/* =========================
-   細かな水面の揺らぎ
-========================= */
-
-.waterPlane::after{
- content:"";
-
- position:absolute;
-
- inset:0;
-
- opacity:.52;
-
- background:
-
-  repeating-linear-gradient(
-   174deg,
-   transparent 0px,
-   transparent 13px,
-   rgba(255,255,255,.25) 15px,
-   rgba(83,187,234,.12) 17px,
-   transparent 20px,
-   transparent 34px
-  );
-
- filter:
-  blur(.8px);
-
- animation:
-  waterDrift 9s
-  linear
-  infinite alternate;
-}
-
-
-/* =========================
-   波の立体感を出す
-   ハイライト
-========================= */
-
-.waveHighlight{
+.stageLight{
  position:absolute;
 
  left:50%;
- bottom:48px;
+ bottom:34px;
 
- width:390px;
- height:100px;
-
- transform:
-  translateX(-50%)
-  perspective(500px)
-  rotateX(66deg);
-
- border-radius:50%;
-
- background:
-
-  radial-gradient(
-   ellipse,
-   transparent 0 36%,
-   rgba(255,255,255,.62) 39%,
-   rgba(84,196,244,.30) 42%,
-   rgba(17,130,202,.13) 45%,
-   transparent 49%
-  );
-
- filter:
-  blur(1.3px);
-
- opacity:.72;
-
- pointer-events:none;
-}
-
-
-/* =========================
-   中央カード下の青白い光
-========================= */
-
-.waterGlow{
- position:absolute;
-
- left:50%;
- bottom:37px;
-
- width:285px;
+ width:330px;
  height:82px;
 
- margin-left:-142.5px;
+ transform:
+  translateX(-50%);
 
  border-radius:50%;
 
  background:
   radial-gradient(
    ellipse,
-   rgba(255,255,255,.70),
-   rgba(92,208,255,.34) 27%,
-   rgba(39,168,232,.15) 50%,
+   rgba(255,255,255,.48) 0%,
+   rgba(173,235,255,.19) 35%,
+   rgba(94,204,245,.07) 53%,
    transparent 72%
   );
 
- filter:
-  blur(12px);
+ filter:blur(12px);
 
  pointer-events:none;
 
@@ -572,46 +363,8 @@ header{
 }
 
 
-/* 水面が呼吸するような微細な動き */
-
-@keyframes waterBreath{
-
- 0%{
-  transform:
-   translate3d(-8px,2px,0)
-   scaleY(.80);
- }
-
- 100%{
-  transform:
-   translate3d(9px,-3px,0)
-   scaleY(.88);
- }
-
-}
-
-
-/* 水の表面がゆっくり流れる */
-
-@keyframes waterDrift{
-
- 0%{
-  transform:
-   translateX(-10px)
-   translateY(2px);
- }
-
- 100%{
-  transform:
-   translateX(13px)
-   translateY(-3px);
- }
-
-}
-
-
 /* =========================
-   3Dカード用
+   COVERFLOW
 ========================= */
 
 .coverflowStage{
@@ -620,49 +373,47 @@ header{
  width:100%;
  height:100%;
 
- transform-style:
-  preserve-3d;
+ transform-style:preserve-3d;
 }
+
+
+/* =========================
+   各スクリーン
+========================= */
 
 .screen{
  position:absolute;
 
- width:
-  min(67vw,285px);
-
- height:
-  min(82vw,350px);
+ width:min(66vw,285px);
+ height:min(80vw,345px);
 
  left:50%;
- top:44%;
+ top:45%;
 
  overflow:hidden;
 
- border-radius:17px;
+ border-radius:18px;
 
  background:
-  rgba(255,255,255,.96);
+  rgba(255,255,255,.97);
 
  text-decoration:none;
 
  color:#15283d;
 
- transform-style:
-  preserve-3d;
-
- transform-origin:
-  center center;
+ transform-style:preserve-3d;
+ transform-origin:center center;
 
  border:
   1px solid
-  rgba(65,175,245,.58);
+  rgba(105,198,245,.68);
 
  box-shadow:
-  0 0 0 2px
-  rgba(135,215,255,.08),
+  0 9px 24px
+  rgba(24,85,130,.12),
 
-  0 14px 36px
-  rgba(25,75,115,.15);
+  0 25px 55px
+  rgba(20,95,155,.10);
 
  will-change:
   transform,
@@ -670,17 +421,27 @@ header{
   filter;
 }
 
+
+/*
+  中央スクリーンだけ
+  水面から一段手前へ浮く
+*/
+
 .screen.center{
  border-color:
-  rgba(65,185,255,.88);
+  rgba(72,190,250,.95);
 
  box-shadow:
-  0 0 15px
-  rgba(70,195,255,.38),
+  0 0 17px
+  rgba(102,214,255,.34),
 
-  0 27px 62px
-  rgba(20,100,165,.25);
+  0 25px 57px
+  rgba(20,100,160,.22),
+
+  0 38px 75px
+  rgba(16,78,130,.13);
 }
+
 
 .screen img{
  display:block;
@@ -692,6 +453,7 @@ header{
 
  pointer-events:none;
 }
+
 
 .screenCaption{
  height:21%;
@@ -707,10 +469,11 @@ header{
  background:
   linear-gradient(
    135deg,
-   rgba(255,255,255,.98),
-   rgba(235,248,255,.98)
+   rgba(255,255,255,.99),
+   rgba(239,249,255,.98)
   );
 }
+
 
 .screenTitle{
  color:#152d56;
@@ -718,6 +481,7 @@ header{
  font-size:16px;
  font-weight:800;
 }
+
 
 .screenSub{
  color:#7790a6;
@@ -727,31 +491,32 @@ header{
 
 
 /* =========================
-   水面へのカード反射
+   水面反射
+
+   カードのコピーを
+   水面へ薄く映す
 ========================= */
 
 .reflection{
  position:absolute;
 
- width:
-  min(67vw,285px);
-
- height:100px;
+ width:min(63vw,272px);
+ height:82px;
 
  left:50%;
- top:74%;
+ top:76%;
 
  overflow:hidden;
 
- border-radius:15px;
+ border-radius:
+  0 0 18px 18px;
 
- opacity:.13;
+ opacity:.10;
 
  filter:
-  blur(2.4px);
+  blur(2.2px);
 
- transform-origin:
-  center top;
+ transform-origin:center top;
 
  pointer-events:none;
 
@@ -760,40 +525,44 @@ header{
   opacity;
 }
 
+
 .reflection img{
+ display:block;
+
  width:100%;
  height:100%;
 
  object-fit:cover;
 
- transform:
-  scaleY(-1);
+ transform:scaleY(-1);
 
- opacity:.75;
+ opacity:.70;
 
  -webkit-mask-image:
   linear-gradient(
    to bottom,
-   rgba(0,0,0,.65),
+   rgba(0,0,0,.60),
+   rgba(0,0,0,.18) 48%,
    transparent
   );
 
  mask-image:
   linear-gradient(
    to bottom,
-   rgba(0,0,0,.65),
+   rgba(0,0,0,.60),
+   rgba(0,0,0,.18) 48%,
    transparent
   );
 }
 
 
 /* =========================
-   ●
+   インジケーター
 ========================= */
 
 .coverflowDots{
  position:relative;
- z-index:20;
+ z-index:30;
 
  display:flex;
  justify-content:center;
@@ -801,8 +570,9 @@ header{
 
  gap:6px;
 
- margin-top:-3px;
+ margin-top:-5px;
 }
+
 
 .flowDot{
  width:6px;
@@ -810,10 +580,14 @@ header{
 
  border-radius:20px;
 
- background:#c7d8e7;
+ background:
+  rgba(166,196,218,.72);
 
- transition:.35s;
+ transition:
+  width .35s ease,
+  background .35s ease;
 }
+
 
 .flowDot.active{
  width:22px;
@@ -823,12 +597,12 @@ header{
 
 
 /* =========================
-   トップボタン
+   TOPボタン
 ========================= */
 
 .heroButtons{
  position:relative;
- z-index:20;
+ z-index:30;
 
  display:flex;
  justify-content:center;
@@ -838,8 +612,9 @@ header{
  flex-wrap:wrap;
 
  padding:
-  23px 18px 0;
+  22px 18px 0;
 }
+
 
 .heroBtn{
  min-width:143px;
@@ -854,6 +629,7 @@ header{
  font-size:13px;
  font-weight:800;
 }
+
 
 .heroBtn.primary{
  color:#fff;
@@ -870,6 +646,7 @@ header{
   rgba(20,135,235,.22);
 }
 
+
 .heroBtn.secondary{
  color:#176eb7;
 
@@ -877,7 +654,33 @@ header{
   rgba(255,255,255,.82);
 
  border:
-  1px solid #b8dcf7;
+  1px solid
+  rgba(155,210,245,.85);
+
+ backdrop-filter:blur(8px);
+}
+
+
+/* =========================
+   スマホ縦長調整
+========================= */
+
+@media(max-width:480px){
+
+ .hero{
+  background-size:
+   auto,
+   auto 72%;
+
+  background-position:
+   center,
+   center bottom;
+ }
+
+ .waterStage{
+  height:410px;
+ }
+
 }
 
 </style></head>
@@ -890,7 +693,9 @@ header{
 
 <main>
 
-<!-- ===== TOP ===== -->
+<!-- =========================
+     TOP
+========================= -->
 
 <div class="hero">
 
@@ -913,121 +718,226 @@ header{
  </div>
 
 
- <!-- ===== 水上3Dステージ ===== -->
+ <!-- =========================
+      水上5面スクリーン
+ ========================= -->
 
  <div class="waterStage" id="coverflowScene">
 
-  <!-- 立体水面 -->
-  <div class="waterPlane"></div>
-
-  <!-- 波頭のハイライト -->
-  <div class="waveHighlight"></div>
-
-  <!-- 中央の水中光 -->
-  <div class="waterGlow"></div>
-
-
-  <!-- ===== 5面スクリーン ===== -->
+  <div class="stageLight"></div>
 
   <div class="coverflowStage" id="coverflowStage">
 
+
+   <!-- 1 鍼灸 -->
+
    <a class="screen" href="#hari" data-index="0">
-    <img src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png" alt="鍼灸">
+
+    <img
+     src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png"
+     alt="鍼灸">
+
     <div class="screenCaption">
      <div class="screenTitle">鍼灸</div>
-     <div class="screenSub">身体に合わせた鍼灸施術</div>
+     <div class="screenSub">
+      身体に合わせた鍼灸施術
+     </div>
     </div>
+
    </a>
+
+
+   <!-- 2 整体 -->
 
    <a class="screen" href="#seitai" data-index="1">
-    <img src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png" alt="整体">
+
+    <img
+     src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png"
+     alt="整体">
+
     <div class="screenCaption">
      <div class="screenTitle">整体</div>
-     <div class="screenSub">身体全体を整える</div>
+     <div class="screenSub">
+      身体全体を整える
+     </div>
     </div>
+
    </a>
+
+
+   <!-- 3 リフレクソロジー -->
 
    <a class="screen" href="#reflex" data-index="2">
-    <img src="Gemini_Generated_Image_7bms957bms957bms.png" alt="リフレクソロジー">
+
+    <img
+     src="Gemini_Generated_Image_7bms957bms957bms.png"
+     alt="リフレクソロジー">
+
     <div class="screenCaption">
-     <div class="screenTitle">リフレクソロジー</div>
-     <div class="screenSub">足元から心地よく</div>
+     <div class="screenTitle">
+      リフレクソロジー
+     </div>
+
+     <div class="screenSub">
+      足元から心地よく
+     </div>
     </div>
+
    </a>
+
+
+   <!-- 4 美容鍼 -->
 
    <a class="screen" href="#biyou" data-index="3">
-    <img src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png" alt="美容鍼">
+
+    <img
+     src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png"
+     alt="美容鍼">
+
     <div class="screenCaption">
      <div class="screenTitle">美容鍼</div>
-     <div class="screenSub">美容を目的とした鍼施術</div>
+     <div class="screenSub">
+      美容を目的とした鍼施術
+     </div>
     </div>
+
    </a>
+
+
+   <!-- 5 ドライヘッドスパ -->
 
    <a class="screen" href="#head" data-index="4">
-    <img src="Gemini_Generated_Image_cgitr8cgitr8cgit.png" alt="ドライヘッドスパ">
+
+    <img
+     src="Gemini_Generated_Image_cgitr8cgitr8cgit.png"
+     alt="ドライヘッドスパ">
+
     <div class="screenCaption">
-     <div class="screenTitle">ドライヘッドスパ</div>
-     <div class="screenSub">頭部を中心としたケア</div>
+     <div class="screenTitle">
+      ドライヘッドスパ
+     </div>
+
+     <div class="screenSub">
+      頭部を中心としたケア
+     </div>
     </div>
+
    </a>
+
+
+   <!-- 6 筋膜トリートメント -->
 
    <a class="screen" href="#kinmaku" data-index="5">
-    <img src="Gemini_Generated_Image_g443v6g443v6g443.png" alt="筋膜トリートメント">
+
+    <img
+     src="Gemini_Generated_Image_g443v6g443v6g443.png"
+     alt="筋膜トリートメント">
+
     <div class="screenCaption">
-     <div class="screenTitle">筋膜トリートメント</div>
-     <div class="screenSub">筋膜に着目したボディケア</div>
+     <div class="screenTitle">
+      筋膜トリートメント
+     </div>
+
+     <div class="screenSub">
+      筋膜に着目したボディケア
+     </div>
     </div>
+
    </a>
+
+
+   <!-- 7 ホットストーン -->
 
    <a class="screen" href="#stone" data-index="6">
-    <img src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png" alt="ホットストーン">
+
+    <img
+     src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png"
+     alt="ホットストーン">
+
     <div class="screenCaption">
-     <div class="screenTitle">ホットストーン</div>
-     <div class="screenSub">温かなストーンを使った施術</div>
+     <div class="screenTitle">
+      ホットストーン
+     </div>
+
+     <div class="screenSub">
+      温かなストーンを使った施術
+     </div>
     </div>
+
    </a>
+
+
+   <!-- 8 カッピング -->
 
    <a class="screen" href="#cup" data-index="7">
-    <img src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png" alt="カッピング">
+
+    <img
+     src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png"
+     alt="カッピング">
+
     <div class="screenCaption">
-     <div class="screenTitle">カッピング</div>
-     <div class="screenSub">吸引を利用したボディケア</div>
+     <div class="screenTitle">
+      カッピング
+     </div>
+
+     <div class="screenSub">
+      吸引を利用したボディケア
+     </div>
     </div>
+
    </a>
 
 
-   <!-- ===== 水面への反射 ===== -->
+   <!-- =========================
+        水面反射
+   ========================= -->
 
    <div class="reflection" data-ref="0">
-    <img src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png" alt="">
+    <img
+     src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png"
+     alt="">
    </div>
 
    <div class="reflection" data-ref="1">
-    <img src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png" alt="">
+    <img
+     src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png"
+     alt="">
    </div>
 
    <div class="reflection" data-ref="2">
-    <img src="Gemini_Generated_Image_7bms957bms957bms.png" alt="">
+    <img
+     src="Gemini_Generated_Image_7bms957bms957bms.png"
+     alt="">
    </div>
 
    <div class="reflection" data-ref="3">
-    <img src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png" alt="">
+    <img
+     src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png"
+     alt="">
    </div>
 
    <div class="reflection" data-ref="4">
-    <img src="Gemini_Generated_Image_cgitr8cgitr8cgit.png" alt="">
+    <img
+     src="Gemini_Generated_Image_cgitr8cgitr8cgit.png"
+     alt="">
    </div>
 
    <div class="reflection" data-ref="5">
-    <img src="Gemini_Generated_Image_g443v6g443v6g443.png" alt="">
+    <img
+     src="Gemini_Generated_Image_g443v6g443v6g443.png"
+     alt="">
    </div>
 
    <div class="reflection" data-ref="6">
-    <img src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png" alt="">
+    <img
+     src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png"
+     alt="">
    </div>
 
    <div class="reflection" data-ref="7">
-    <img src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png" alt="">
+    <img
+     src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png"
+     alt="">
    </div>
 
   </div>
@@ -1035,7 +945,9 @@ header{
  </div>
 
 
- <!-- ===== ● ===== -->
+ <!-- =========================
+      インジケーター
+ ========================= -->
 
  <div class="coverflowDots">
 
@@ -1051,6 +963,10 @@ header{
  </div>
 
 
+ <!-- =========================
+      TOPボタン
+ ========================= -->
+
  <div class="heroButtons">
 
   <a class="heroBtn primary" href="#menu">
@@ -1065,424 +981,588 @@ header{
 
 </div><style>
 
-/* ===== 下半分 ===== */
+/* =========================
+   TOP以下 共通
+========================= */
 
 section{
- padding:72px 17px;
+ position:relative;
+ padding:76px 20px;
 }
 
-.wrap{
- max-width:1050px;
- margin:auto;
-}
-
-.paleBlue{
- background:linear-gradient(150deg,#f7fcff,#eaf6fd);
-}
-
-.paleGray{
- background:linear-gradient(150deg,#fafbfd,#eff3f6);
+.sectionInner{
+ width:min(100%,920px);
+ margin:0 auto;
 }
 
 .sectionLabel{
- color:#1688ef;
- font-size:12px;
- font-weight:900;
- letter-spacing:.12em;
+ margin-bottom:5px;
+
+ color:#1986dc;
+
+ font-size:11px;
+ font-weight:800;
+
+ letter-spacing:.22em;
 }
 
-h2{
- margin:4px 0 8px;
- font-size:29px;
+.sectionTitle{
+ margin:0 0 14px;
+
+ color:#132d56;
+
+ font-family:
+  "Yu Mincho",
+  "Hiragino Mincho ProN",
+  "MS PMincho",
+  serif;
+
+ font-size:clamp(27px,7vw,40px);
+
+ font-weight:500;
+
  line-height:1.35;
 }
 
 .sectionLead{
- margin:0 0 27px;
- color:#718297;
+ margin:0;
+
+ color:#65788b;
+
  font-size:14px;
+ line-height:2;
 }
 
 
-/* ===== メニューカード ===== */
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+ background:
+  linear-gradient(
+   180deg,
+   #fff,
+   #f6fbff
+  );
+
+ text-align:center;
+}
+
+.introText{
+ max-width:650px;
+ margin:27px auto 0;
+
+ color:#425a70;
+
+ font-size:14px;
+ line-height:2.25;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.menuSection{
+ background:#f6fbff;
+}
 
 .menuGrid{
  display:grid;
- grid-template-columns:repeat(2,1fr);
+ grid-template-columns:
+  repeat(2,minmax(0,1fr));
+
  gap:13px;
+
+ margin-top:31px;
 }
 
 .menuCard{
+ position:relative;
+
+ min-height:132px;
+
+ padding:21px 17px;
+
  overflow:hidden;
- background:#fff;
+
  border-radius:21px;
- text-decoration:none;
- color:#14263c;
- box-shadow:0 10px 28px rgba(30,80,120,.09);
- transition:transform .25s ease;
+
+ background:
+  rgba(255,255,255,.94);
+
+ border:
+  1px solid
+  rgba(155,210,245,.42);
+
+ box-shadow:
+  0 10px 30px
+  rgba(26,92,145,.06);
 }
 
-.menuCard:active{
- transform:scale(.96);
-}
+.menuCard::before{
+ content:"";
 
-.menuCard img{
- display:block;
- width:100%;
- aspect-ratio:1/1;
- object-fit:cover;
+ position:absolute;
+
+ width:85px;
+ height:85px;
+
+ right:-27px;
+ top:-27px;
+
+ border-radius:50%;
+
+ background:
+  radial-gradient(
+   circle,
+   rgba(85,194,250,.17),
+   transparent 70%
+  );
 }
 
 .menuName{
- padding:11px 12px 14px;
+ position:relative;
+
+ color:#173963;
+
+ font-size:15px;
+ font-weight:800;
+}
+
+.menuDetail{
+ position:relative;
+
+ margin-top:7px;
+
+ color:#7890a5;
+
+ font-size:10px;
+ line-height:1.7;
+}
+
+.menuStaff{
+ position:relative;
+
+ display:inline-block;
+
+ margin-top:13px;
+
+ padding:3px 9px;
+
+ border-radius:20px;
+
+ color:#1779c6;
+
+ background:#edf8ff;
+
+ font-size:9px;
+ font-weight:800;
+}
+
+
+/* =========================
+   STAFF
+========================= */
+
+.staffSection{
+ background:#fff;
+}
+
+.staffGrid{
+ display:grid;
+ grid-template-columns:
+  repeat(2,minmax(0,1fr));
+
+ gap:14px;
+
+ margin-top:31px;
+}
+
+.staffCard{
+ padding:27px 18px;
+
+ border-radius:24px;
+
+ text-align:center;
+
+ background:
+  linear-gradient(
+   145deg,
+   #fff,
+   #f4faff
+  );
+
+ border:
+  1px solid
+  rgba(145,205,240,.38);
+
+ box-shadow:
+  0 12px 32px
+  rgba(20,85,135,.07);
+}
+
+.staffIcon{
+ width:69px;
+ height:69px;
+
+ margin:0 auto 15px;
+
+ display:flex;
+ align-items:center;
+ justify-content:center;
+
+ border-radius:50%;
+
+ color:#fff;
+
+ font-family:
+  "Yu Mincho",
+  serif;
+
+ font-size:27px;
+
+ background:
+  linear-gradient(
+   145deg,
+   #1975c6,
+   #54c5f2
+  );
+
+ box-shadow:
+  0 8px 22px
+  rgba(25,125,205,.18);
+}
+
+.staffName{
+ color:#16365e;
+
+ font-size:18px;
+ font-weight:800;
+}
+
+.staffRole{
+ margin-top:3px;
+
+ color:#2487cb;
+
+ font-size:10px;
+ font-weight:700;
+}
+
+.staffText{
+ margin-top:15px;
+
+ color:#70869a;
+
+ font-size:11px;
+ line-height:1.9;
+}
+
+
+/* =========================
+   RESERVE
+========================= */
+
+.reserveSection{
+ background:
+  linear-gradient(
+   155deg,
+   #0f6bc0,
+   #31a9eb
+  );
+
+ color:#fff;
+}
+
+.reserveSection .sectionLabel,
+.reserveSection .sectionTitle,
+.reserveSection .sectionLead{
+ color:#fff;
+}
+
+.reserveBox{
+ margin-top:29px;
+
+ padding:25px 19px;
+
+ border-radius:24px;
+
+ background:
+  rgba(255,255,255,.14);
+
+ border:
+  1px solid
+  rgba(255,255,255,.25);
+
+ backdrop-filter:blur(9px);
+ -webkit-backdrop-filter:blur(9px);
+}
+
+.reserveImportant{
+ margin-bottom:20px;
+
+ padding:14px;
+
+ border-radius:15px;
+
+ background:
+  rgba(255,255,255,.94);
+
+ color:#155487;
+
+ font-size:11px;
+ font-weight:700;
+
+ line-height:1.9;
+}
+
+.reserveSteps{
+ display:grid;
+ gap:10px;
+}
+
+.reserveStep{
+ display:flex;
+ align-items:flex-start;
+
+ gap:12px;
+
+ padding:12px 0;
+
+ border-bottom:
+  1px solid
+  rgba(255,255,255,.16);
+}
+
+.reserveStep:last-child{
+ border-bottom:0;
+}
+
+.stepNumber{
+ flex:none;
+
+ width:27px;
+ height:27px;
+
+ display:flex;
+ align-items:center;
+ justify-content:center;
+
+ border-radius:50%;
+
+ color:#1779c6;
+
+ background:#fff;
+
+ font-size:12px;
  font-weight:900;
 }
 
+.stepText{
+ padding-top:2px;
 
-/* ===== 施術説明 ===== */
-
-.infoGrid{
- display:grid;
- gap:14px;
+ font-size:12px;
+ line-height:1.75;
 }
 
-.infoBox{
- padding:22px;
+.lineButton{
+ display:block;
+
+ margin-top:21px;
+
+ padding:14px 18px;
+
+ border-radius:30px;
+
+ text-align:center;
+
+ text-decoration:none;
+
+ color:#11649f;
+
  background:#fff;
- border:1px solid #deebf5;
+
+ font-size:13px;
+ font-weight:900;
+
+ box-shadow:
+  0 10px 25px
+  rgba(0,40,90,.14);
+}
+
+
+/* =========================
+   ACCESS
+========================= */
+
+.accessSection{
+ background:#f7fbfe;
+}
+
+.accessBox{
+ margin-top:28px;
+
+ padding:24px 20px;
+
  border-radius:23px;
- box-shadow:0 9px 25px rgba(30,75,110,.07);
- scroll-margin-top:75px;
+
+ background:#fff;
+
+ border:
+  1px solid
+  rgba(150,205,240,.40);
+
+ box-shadow:
+  0 10px 30px
+  rgba(30,90,140,.06);
 }
 
-.infoBox h3{
- margin:0 0 6px;
- color:#117bdc;
- font-size:19px;
+.accessRow{
+ padding:14px 0;
+
+ border-bottom:
+  1px solid #eaf2f7;
 }
 
-.infoBox p{
- margin:0;
- color:#607387;
- font-size:14px;
+.accessRow:last-child{
+ border-bottom:0;
+}
+
+.accessLabel{
+ margin-bottom:4px;
+
+ color:#1c80c7;
+
+ font-size:10px;
+ font-weight:800;
+}
+
+.accessValue{
+ color:#354e64;
+
+ font-size:13px;
+ line-height:1.8;
 }
 
 
-/* ===== スクロールアニメーション ===== */
+/* =========================
+   REVEAL
+========================= */
 
 .reveal{
  opacity:0;
- transform:translateY(30px);
+
+ transform:
+  translateY(25px);
+
  transition:
-  opacity .75s ease,
-  transform .75s cubic-bezier(.22,.61,.36,1);
-}
-
-.reveal.left{
- transform:translateX(-38px);
-}
-
-.reveal.right{
- transform:translateX(38px);
+  opacity .8s ease,
+  transform .8s ease;
 }
 
 .reveal.show{
  opacity:1;
- transform:translate(0,0);
-}
 
-@media(min-width:760px){
-
- .menuGrid{
-  grid-template-columns:repeat(4,1fr);
- }
-
- .infoGrid{
-  grid-template-columns:repeat(2,1fr);
- }
-
-}
-
-</style>
-
-
-<!-- ===== 施術メニュー ===== -->
-
-<section class="paleBlue" id="menu">
-
-<div class="wrap">
-
- <div class="reveal">
-
-  <div class="sectionLabel">
-   施術メニュー
-  </div>
-
-  <h2>
-   あなたの身体に、必要なケアを。
-  </h2>
-
-  <p class="sectionLead">
-   8つの施術から、身体の状態や目的に合わせてご提案します。
-  </p>
-
- </div>
-
-
- <div class="menuGrid">
-
-  <a class="menuCard reveal left" href="#hari">
-   <img src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png" alt="鍼灸">
-   <div class="menuName">鍼灸</div>
-  </a>
-
-  <a class="menuCard reveal right" href="#seitai">
-   <img src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png" alt="整体">
-   <div class="menuName">整体</div>
-  </a>
-
-  <a class="menuCard reveal left" href="#reflex">
-   <img src="Gemini_Generated_Image_7bms957bms957bms.png" alt="リフレクソロジー">
-   <div class="menuName">リフレクソロジー</div>
-  </a>
-
-  <a class="menuCard reveal right" href="#biyou">
-   <img src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png" alt="美容鍼">
-   <div class="menuName">美容鍼</div>
-  </a>
-
-  <a class="menuCard reveal left" href="#head">
-   <img src="Gemini_Generated_Image_cgitr8cgitr8cgit.png" alt="ドライヘッドスパ">
-   <div class="menuName">ドライヘッドスパ</div>
-  </a>
-
-  <a class="menuCard reveal right" href="#kinmaku">
-   <img src="Gemini_Generated_Image_g443v6g443v6g443.png" alt="筋膜トリートメント">
-   <div class="menuName">筋膜トリートメント</div>
-  </a>
-
-  <a class="menuCard reveal left" href="#stone">
-   <img src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png" alt="ホットストーン">
-   <div class="menuName">ホットストーン</div>
-  </a>
-
-  <a class="menuCard reveal right" href="#cup">
-   <img src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png" alt="カッピング">
-   <div class="menuName">カッピング</div>
-  </a>
-
- </div>
-
-</div>
-
-</section>
-
-
-<!-- ===== 施術について ===== -->
-
-<section class="paleGray">
-
-<div class="wrap">
-
- <div class="reveal">
-
-  <div class="sectionLabel">
-   施術について
-  </div>
-
-  <h2>
-   一人ひとりの身体に合わせて。
-  </h2>
-
-  <p class="sectionLead">
-   その日の身体の状態を確認しながら施術を組み立てます。
-  </p>
-
- </div>
-
-
- <div class="infoGrid">
-
-  <div class="infoBox reveal left" id="hari">
-   <h3>鍼灸</h3>
-   <p>身体の状態や目的に合わせ、鍼や灸を用いて身体へアプローチします。</p>
-  </div>
-
-  <div class="infoBox reveal right" id="seitai">
-   <h3>整体</h3>
-   <p>筋肉や関節など身体全体の状態を確認し、手技を中心に身体を整えます。</p>
-  </div>
-
-  <div class="infoBox reveal left" id="reflex">
-   <h3>リフレクソロジー</h3>
-   <p>足裏や足周辺への心地よい刺激を使い、足元から身体をケアします。</p>
-  </div>
-
-  <div class="infoBox reveal right" id="biyou">
-   <h3>美容鍼</h3>
-   <p>お顔を中心に鍼を使用し、美容を目的として行う鍼施術です。</p>
-  </div>
-
-  <div class="infoBox reveal left" id="head">
-   <h3>ドライヘッドスパ</h3>
-   <p>水やオイルを使用せず、頭部を中心に手技でゆっくりとほぐします。</p>
-  </div>
-
-  <div class="infoBox reveal right" id="kinmaku">
-   <h3>筋膜トリートメント</h3>
-   <p>筋膜に着目し、身体の状態や動きに合わせて行うトリートメントです。</p>
-  </div>
-
-  <div class="infoBox reveal left" id="stone">
-   <h3>ホットストーン</h3>
-   <p>温めたストーンの心地よい温もりを利用したボディケアです。</p>
-  </div>
-
-  <div class="infoBox reveal right" id="cup">
-   <h3>カッピング</h3>
-   <p>専用のカップを皮膚へ吸着させ、吸引による刺激を利用して行う施術です。</p>
-  </div>
-
- </div>
-
-</div>
-
-</section><style>
-
-/* ===== スタッフ・コース ===== */
-
-.twoGrid{
- display:grid;
- gap:15px;
-}
-
-.staffCard,
-.courseCard{
- background:#fff;
- border:1px solid #deebf5;
- border-radius:25px;
- box-shadow:0 10px 28px rgba(30,75,110,.08);
- overflow:hidden;
-}
-
-.staffInner,
-.courseInner{
- padding:22px;
-}
-
-.staffRole{
- color:#1688ef;
- font-size:12px;
- font-weight:900;
-}
-
-.staffName{
- margin:2px 0 7px;
- font-size:23px;
- font-weight:900;
-}
-
-.staffInner p,
-.courseInner p{
- margin:5px 0;
- color:#607387;
- font-size:14px;
-}
-
-.timeList{
- display:flex;
- gap:7px;
- flex-wrap:wrap;
- margin-top:13px;
-}
-
-.timeList span{
- padding:6px 12px;
- border-radius:30px;
- background:#edf7ff;
- color:#1767a9;
- font-size:12px;
- font-weight:900;
+ transform:
+  translateY(0);
 }
 
 
-/* ===== LINE予約 ===== */
-
-.reserveBox{
- padding:23px;
- background:#fff;
- border:1px solid #dbeaf6;
- border-radius:25px;
- box-shadow:0 12px 30px rgba(30,75,110,.08);
-}
-
-.reserveImportant{
- margin:16px 0;
- padding:16px;
- background:#edf7ff;
- border-left:4px solid #1688ef;
- border-radius:7px 17px 17px 7px;
- font-weight:900;
-}
-
-
-/* ===== フッター ===== */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
- padding:43px 20px 105px;
+ padding:
+  38px 20px
+  95px;
+
  text-align:center;
- background:#edf4f9;
- color:#5f7182;
+
+ color:#8193a3;
+
+ background:#fff;
+
+ font-size:10px;
 }
 
 footer strong{
  display:block;
- color:#142c47;
- font-size:23px;
+
+ margin-bottom:4px;
+
+ color:#173b67;
+
+ font-family:
+  "Times New Roman",
+  serif;
+
+ font-size:24px;
+ font-weight:400;
 }
 
 
-/* ===== 固定予約ボタン ===== */
+/* =========================
+   固定予約ボタン
+========================= */
 
 .fixedReserve{
  position:fixed;
- z-index:90;
- left:12px;
- right:12px;
- bottom:12px;
 
- padding:14px;
+ z-index:200;
 
- border-radius:18px;
+ left:50%;
+ bottom:14px;
+
+ transform:
+  translateX(-50%);
+
+ width:
+  min(calc(100% - 28px),480px);
+
+ padding:13px 20px;
+
+ border-radius:40px;
 
  text-align:center;
+
  text-decoration:none;
 
  color:#fff;
- font-weight:900;
 
  background:
   linear-gradient(
    135deg,
-   #0878e6,
-   #22a7ff
+   #106cc8,
+   #22a2ed
   );
 
  box-shadow:
-  0 10px 28px
-  rgba(0,110,220,.30);
+  0 10px 27px
+  rgba(10,90,165,.27);
+
+ font-size:13px;
+ font-weight:900;
 }
 
-@media(min-width:760px){
 
- .twoGrid{
-  grid-template-columns:repeat(2,1fr);
+/* =========================
+   PC
+========================= */
+
+@media(min-width:720px){
+
+ .menuGrid{
+  grid-template-columns:
+   repeat(4,minmax(0,1fr));
  }
 
- .fixedReserve{
-  left:auto;
-  right:25px;
-  width:250px;
+ .staffGrid{
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
  }
 
 }
@@ -1490,314 +1570,507 @@ footer strong{
 </style>
 
 
-<!-- ===== スタッフ紹介 ===== -->
+<!-- =========================
+     INTRO
+========================= -->
 
-<section>
+<section class="intro">
 
-<div class="wrap">
-
- <div class="reveal">
+ <div class="sectionInner reveal">
 
   <div class="sectionLabel">
-   スタッフ紹介
+   TOTAL BODY CARE
   </div>
 
-  <h2>
-   二人の技術を、ひとつの場所で。
+  <h2 class="sectionTitle">
+   身体を、ひとつの流れとしてみる。
   </h2>
 
   <p class="sectionLead">
-   鍼灸と整体、それぞれの専門性を活かして施術します。
+   鍼灸と整体、それぞれの専門性を活かした
+   トータルボディケア。
   </p>
+
+  <div class="introText">
+   痛みや疲れが現れている場所だけではなく、
+   身体全体の状態を確認しながら施術を組み立てます。
+   <br><br>
+   一人ひとりの身体に合わせて、
+   必要なケアを丁寧に。
+  </div>
 
  </div>
 
+</section>
 
- <div class="twoGrid">
 
-  <div class="staffCard reveal left">
+<!-- =========================
+     MENU
+========================= -->
 
-   <div class="staffInner">
+<section class="menuSection" id="menu">
 
-    <div class="staffRole">
-     鍼灸担当
+ <div class="sectionInner">
+
+  <div class="reveal">
+
+   <div class="sectionLabel">
+    TREATMENT
+   </div>
+
+   <h2 class="sectionTitle">
+    施術メニュー
+   </h2>
+
+   <p class="sectionLead">
+    身体の状態や目的に合わせて
+    お選びいただけます。
+   </p>
+
+  </div>
+
+
+  <div class="menuGrid">
+
+   <div class="menuCard reveal" id="hari">
+    <div class="menuName">鍼灸</div>
+    <div class="menuDetail">
+     お身体の状態を確認し、
+     必要なポイントへ施術します。
+    </div>
+    <div class="menuStaff">担当　兵永</div>
+   </div>
+
+
+   <div class="menuCard reveal" id="biyou">
+    <div class="menuName">美容鍼</div>
+    <div class="menuDetail">
+     お顔を中心に行う
+     美容目的の鍼施術です。
+    </div>
+    <div class="menuStaff">担当　兵永</div>
+   </div>
+
+
+   <div class="menuCard reveal">
+    <div class="menuName">全身鍼</div>
+    <div class="menuDetail">
+     全身の状態を確認しながら
+     鍼施術を行います。
+    </div>
+    <div class="menuStaff">担当　兵永</div>
+   </div>
+
+
+   <div class="menuCard reveal">
+    <div class="menuName">不妊治療鍼</div>
+    <div class="menuDetail">
+     お身体の状態に合わせて
+     鍼灸施術を行います。
+    </div>
+    <div class="menuStaff">担当　兵永</div>
+   </div>
+
+
+   <div class="menuCard reveal" id="cup">
+    <div class="menuName">カッピング</div>
+    <div class="menuDetail">
+     吸引を利用した
+     ボディケアです。
+    </div>
+    <div class="menuStaff">担当　兵永</div>
+   </div>
+
+
+   <div class="menuCard reveal" id="seitai">
+    <div class="menuName">整体</div>
+    <div class="menuDetail">
+     身体全体のバランスを確認し、
+     手技で整えていきます。
+    </div>
+    <div class="menuStaff">担当　三島</div>
+   </div>
+
+
+   <div class="menuCard reveal" id="reflex">
+    <div class="menuName">
+     リフレクソロジー
+    </div>
+    <div class="menuDetail">
+     足元を中心に行う
+     リラクゼーションケア。
+    </div>
+    <div class="menuStaff">担当　三島</div>
+   </div>
+
+
+   <div class="menuCard reveal" id="kinmaku">
+    <div class="menuName">
+     筋膜トリートメント
+    </div>
+    <div class="menuDetail">
+     筋膜に着目した
+     ボディトリートメント。
+    </div>
+    <div class="menuStaff">担当　三島</div>
+   </div>
+
+
+   <div class="menuCard reveal" id="stone">
+    <div class="menuName">
+     ホットストーン
+    </div>
+    <div class="menuDetail">
+     温かなストーンを使用した
+     ボディケアです。
+    </div>
+    <div class="menuStaff">担当　三島</div>
+   </div>
+
+
+   <div class="menuCard reveal" id="head">
+    <div class="menuName">
+     ドライヘッドスパ
+    </div>
+    <div class="menuDetail">
+     頭部を中心に行う
+     リラクゼーションケア。
+    </div>
+    <div class="menuStaff">担当　三島</div>
+   </div>
+
+  </div>
+
+ </div>
+
+</section><!-- =========================
+     STAFF
+========================= -->
+
+<section class="staffSection" id="staff">
+
+ <div class="sectionInner">
+
+  <div class="reveal">
+
+   <div class="sectionLabel">
+    STAFF
+   </div>
+
+   <h2 class="sectionTitle">
+    担当スタッフ
+   </h2>
+
+   <p class="sectionLead">
+    それぞれの専門分野を活かして
+    施術を担当します。
+   </p>
+
+  </div>
+
+
+  <div class="staffGrid">
+
+   <div class="staffCard reveal">
+
+    <div class="staffIcon">
+     兵
     </div>
 
     <div class="staffName">
      兵永
     </div>
 
-    <p>
-     鍼灸・美容鍼・全身鍼・不妊治療鍼などを担当します。
-    </p>
+    <div class="staffRole">
+     鍼灸担当
+    </div>
+
+    <div class="staffText">
+     鍼灸・美容鍼・全身鍼・
+     不妊治療鍼・カッピングを担当します。
+    </div>
 
    </div>
 
-  </div>
 
+   <div class="staffCard reveal">
 
-  <div class="staffCard reveal right">
-
-   <div class="staffInner">
-
-    <div class="staffRole">
-     整体・ボディケア担当
+    <div class="staffIcon">
+     三
     </div>
 
     <div class="staffName">
      三島
     </div>
 
-    <p>
-     整体・筋膜トリートメント・リフレクソロジーなどを担当します。
-    </p>
+    <div class="staffRole">
+     整体・ボディケア担当
+    </div>
+
+    <div class="staffText">
+     整体・リフレクソロジー・
+     筋膜トリートメント・
+     ホットストーン・
+     ドライヘッドスパなどを担当します。
+    </div>
 
    </div>
 
   </div>
 
  </div>
-
-</div>
 
 </section>
 
 
-<!-- ===== 施術コース ===== -->
+<!-- =========================
+     RESERVE
+========================= -->
 
-<section class="paleBlue">
+<section class="reserveSection" id="reserve">
 
-<div class="wrap">
-
- <div class="reveal">
-
-  <div class="sectionLabel">
-   施術コース
-  </div>
-
-  <h2>
-   その日の身体に、ちょうどいい時間を。
-  </h2>
-
-  <p class="sectionLead">
-   通常メニューと特別技術メニューをご用意しています。
-  </p>
-
- </div>
-
-
- <div class="twoGrid">
-
-  <div class="courseCard reveal left">
-
-   <div class="courseInner">
-
-    <div class="sectionLabel">
-     通常メニュー
-    </div>
-
-    <h3>
-     トータルボディケア
-    </h3>
-
-    <p>
-     身体の状態やご希望に合わせて施術内容を組み立てます。
-    </p>
-
-    <div class="timeList">
-     <span>45分</span>
-     <span>60分</span>
-     <span>90分</span>
-     <span>120分</span>
-    </div>
-
-   </div>
-
-  </div>
-
-
-  <div class="courseCard reveal right">
-
-   <div class="courseInner">
-
-    <div class="sectionLabel">
-     特別技術メニュー
-    </div>
-
-    <h3>
-     専門技術メニュー
-    </h3>
-
-    <p>
-     専門技術を組み合わせて行う特別メニューです。
-    </p>
-
-    <div class="timeList">
-     <span>45分</span>
-     <span>60分</span>
-     <span>90分</span>
-     <span>120分</span>
-    </div>
-
-   </div>
-
-  </div>
-
- </div>
-
-</div>
-
-</section>
-
-
-<!-- ===== LINE予約 ===== -->
-
-<section class="paleGray" id="reserve">
-
-<div class="wrap">
-
- <div class="reveal">
+ <div class="sectionInner reveal">
 
   <div class="sectionLabel">
-   LINE予約
+   RESERVATION
   </div>
 
-  <h2>
+  <h2 class="sectionTitle">
    ご予約について
   </h2>
 
   <p class="sectionLead">
-   Axlightのご予約はLINEから受け付けています。
+   LINEからご予約いただけます。
   </p>
 
- </div>
+
+  <div class="reserveBox">
+
+   <div class="reserveImportant">
+    LINE予約は「天野整体」と共同で使用しています。
+    <br><br>
+    メニューページの一番下にある
+    <strong>
+     【Axlight〜アクスライト〜鍼灸・整体院入口】
+    </strong>
+    からお入りください。
+   </div>
 
 
- <div class="reserveBox reveal">
+   <div class="reserveSteps">
 
-  <p>
-   LINE予約ページは
-   <strong>天野整体と共同</strong>
-   で使用しています。
-  </p>
+    <div class="reserveStep">
 
-  <div class="reserveImportant">
+     <div class="stepNumber">
+      1
+     </div>
 
-   メニューページを一番下まで進み、<br><br>
+     <div class="stepText">
+      LINEの予約ページを開きます。
+     </div>
 
-   「Axlight ～アクスライト～<br>
-   鍼灸・整体院入口」<br><br>
+    </div>
 
-   をタップしてください。
+
+    <div class="reserveStep">
+
+     <div class="stepNumber">
+      2
+     </div>
+
+     <div class="stepText">
+      メニューページを一番下まで
+      スクロールします。
+     </div>
+
+    </div>
+
+
+    <div class="reserveStep">
+
+     <div class="stepNumber">
+      3
+     </div>
+
+     <div class="stepText">
+      【Axlight〜アクスライト〜
+      鍼灸・整体院入口】を選択します。
+     </div>
+
+    </div>
+
+
+    <div class="reserveStep">
+
+     <div class="stepNumber">
+      4
+     </div>
+
+     <div class="stepText">
+      ご希望のメニュー・日時・担当者を
+      選択してご予約ください。
+     </div>
+
+    </div>
+
+   </div>
+
+
+   <!--
+      LINE予約URLが確定している場合は
+      href="" の中へURLを入れる
+   -->
+
+   <a
+    class="lineButton"
+    href="#"
+   >
+    LINE予約ページを開く
+   </a>
 
   </div>
 
-  <p>
-   Axlightの入口から、
-   通常メニュー・特別技術メニューをお選びいただけます。
-  </p>
-
  </div>
-
-</div>
 
 </section>
 
 
-<!-- ===== 店舗情報 ===== -->
+<!-- =========================
+     ACCESS
+========================= -->
 
-<section>
+<section class="accessSection" id="access">
 
-<div class="wrap">
-
- <div class="reveal">
+ <div class="sectionInner reveal">
 
   <div class="sectionLabel">
-   店舗情報
+   ACCESS
   </div>
 
-  <h2>
-   Axlight
+  <h2 class="sectionTitle">
+   店舗情報
   </h2>
 
-  <p class="sectionLead">
-   ～アクスライト～ 鍼灸・整体院
-  </p>
+
+  <div class="accessBox">
+
+   <div class="accessRow">
+
+    <div class="accessLabel">
+     店名
+    </div>
+
+    <div class="accessValue">
+     Axlight
+     〜アクスライト〜
+     鍼灸・整体院
+    </div>
+
+   </div>
+
+
+   <div class="accessRow">
+
+    <div class="accessLabel">
+     住所
+    </div>
+
+    <div class="accessValue">
+     〒436-0022<br>
+     静岡県掛川市上張861-14<br>
+     シェアサロン内
+    </div>
+
+   </div>
+
+
+   <div class="accessRow">
+
+    <div class="accessLabel">
+     営業時間
+    </div>
+
+    <div class="accessValue">
+     平日　10:00〜24:00<br>
+     土日　9:00〜24:00
+    </div>
+
+   </div>
+
+
+   <div class="accessRow">
+
+    <div class="accessLabel">
+     定休日
+    </div>
+
+    <div class="accessValue">
+     なし
+    </div>
+
+   </div>
+
+
+   <div class="accessRow">
+
+    <div class="accessLabel">
+     ご予約
+    </div>
+
+    <div class="accessValue">
+     LINE予約
+    </div>
+
+   </div>
+
+  </div>
 
  </div>
-
-
- <div class="infoBox reveal">
-
-  <h3>住所</h3>
-
-  <p>
-   〒436-0022<br>
-   静岡県掛川市上張861-14 シェアサロン内
-  </p>
-
-  <br>
-
-  <h3>営業時間</h3>
-
-  <p>
-   平日　10:00〜24:00<br>
-   土日　9:00〜24:00
-  </p>
-
-  <br>
-
-  <h3>定休日</h3>
-
-  <p>
-   なし
-  </p>
-
- </div>
-
-</div>
 
 </section>
 
- </main><footer>
- <strong>Axlight</strong>
- ～アクスライト～ 鍼灸・整体院
+</main><footer>
+ <strong>𝒜𝓍𝓁𝒾𝑔𝒽𝓉</strong>
+ 〜アクスライト〜鍼灸・整体院
 </footer>
 
 <a class="fixedReserve" href="#reserve">
- LINE予約方法を確認する
+ LINE予約を見る
 </a>
 
 
 <script>
 
 /* =========================
-   下部スクロール表示
+   下部のふわっと表示
 ========================= */
 
 const revealItems =
  document.querySelectorAll(".reveal");
 
 const revealObserver =
- new IntersectionObserver(entries => {
+ new IntersectionObserver(
+  entries => {
 
-  entries.forEach(entry => {
+   entries.forEach(entry => {
 
-   if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
-    entry.target.classList.add("show");
+     entry.target.classList.add("show");
 
-    revealObserver.unobserve(
-     entry.target
-    );
+     revealObserver.unobserve(
+      entry.target
+     );
 
-   }
+    }
 
-  });
+   });
 
- },{
-  threshold:.12
- });
+  },
+  {
+   threshold:.12
+  }
+ );
 
 revealItems.forEach(item => {
  revealObserver.observe(item);
@@ -1805,7 +2078,7 @@ revealItems.forEach(item => {
 
 
 /* =========================
-   WATER COVER FLOW
+   5面 WATER COVERFLOW
 ========================= */
 
 const scene =
@@ -1817,14 +2090,11 @@ const screens =
 const reflections =
  [...document.querySelectorAll(".reflection")];
 
-const flowDots =
+const dots =
  [...document.querySelectorAll(".flowDot")];
 
-const waterGlow =
- document.querySelector(".waterGlow");
-
-const waveHighlight =
- document.querySelector(".waveHighlight");
+const stageLight =
+ document.querySelector(".stageLight");
 
 const total =
  screens.length;
@@ -1847,7 +2117,7 @@ let moved = false;
 
 
 /* =========================
-   3D配置
+   画面配置
 ========================= */
 
 function renderCoverflow(){
@@ -1859,7 +2129,7 @@ function renderCoverflow(){
     index - position;
 
 
-   /* 無限循環 */
+   /* 無限ループ */
 
    while(diff > total / 2){
     diff -= total;
@@ -1881,79 +2151,98 @@ function renderCoverflow(){
 
 
    /*
-      横方向
-
-      中央から左右へ行くほど
-      湾曲して広がる
+      映画館のスクリーンのように
+      中央を囲む湾曲配置
    */
 
-   const x =
-    direction *
-    (
-     Math.min(abs,1) * 155
-     +
-     Math.max(abs - 1,0) * 72
+   let x;
+
+   if(abs <= 1){
+
+    x =
+     direction *
+     abs *
+     151;
+
+   }else{
+
+    x =
+     direction *
+     (
+      151 +
+      (abs - 1) * 79
+     );
+
+   }
+
+
+   /*
+      中央ほど前へ飛び出す
+      左右ほど奥へ
+   */
+
+   const z =
+    145 -
+    abs * 165;
+
+
+   /*
+      左右のスクリーンが
+      中央を向く角度
+   */
+
+   const rotateY =
+    diff * -31;
+
+
+   /*
+      少しだけ円弧状に上下する
+   */
+
+   const y =
+    Math.min(
+     abs * abs * 7,
+     34
     );
 
 
    /*
-      奥行き
-
-      中央だけ手前へ
-   */
-
-   const z =
-    115 - abs * 150;
-
-
-   /*
-      左右のカードを
-      中央方向へ向ける
-   */
-
-   const rotateY =
-    diff * -27;
-
-
-   /*
-      奥ほど小さく
+      奥のスクリーンほど小さい
    */
 
    const scale =
     Math.max(
-     .63,
-     1 - abs * .115
+     .58,
+     1 - abs * .12
     );
 
 
    /*
-      奥ほど透明に
+      奥ほど少し暗くする
+   */
+
+   const brightness =
+    Math.max(
+     .67,
+     1 - abs * .095
+    );
+
+
+   /*
+      一番奥は薄く
    */
 
    const opacity =
     Math.max(
      0,
-     1 - abs * .23
+     1 - abs * .20
     );
 
 
-   /*
-      奥ほど少し暗く
-   */
-
-   const brightness =
-    Math.max(
-     .66,
-     1 - abs * .10
-    );
-
-
-   if(abs > 2.65){
+   if(abs > 2.55){
 
     screen.style.opacity = "0";
-
-    screen.style.pointerEvents =
-     "none";
+    screen.style.pointerEvents = "none";
 
    }else{
 
@@ -1969,6 +2258,7 @@ function renderCoverflow(){
    screen.style.transform =
     `translate(-50%,-50%)
      translateX(${x}px)
+     translateY(${y}px)
      translateZ(${z}px)
      rotateY(${rotateY}deg)
      scale(${scale})`;
@@ -1980,13 +2270,13 @@ function renderCoverflow(){
 
    screen.style.zIndex =
     Math.round(
-     100 - abs * 10
+     100 - abs * 12
     );
 
 
    screen.classList.toggle(
     "center",
-    abs < .45
+    abs < .40
    );
 
 
@@ -2000,35 +2290,36 @@ function renderCoverflow(){
 
    if(reflection){
 
-    const reflectionScale =
+    const reflectScale =
      Math.max(
-      .52,
-      scale * .88
+      .50,
+      scale * .86
      );
 
 
-    const reflectionOpacity =
-     abs > 2.4
+    const reflectOpacity =
+     abs > 2.45
      ? 0
      : Math.max(
-        .025,
-        .16 - abs * .04
+        .018,
+        .115 - abs * .025
        );
 
 
     reflection.style.opacity =
-     reflectionOpacity;
+     reflectOpacity;
 
 
     /*
-      本体より少し中央寄りにして
-      水面の遠近感を出す
+       水面なので本体より
+       横幅を少し中央へ寄せる
     */
 
     reflection.style.transform =
      `translate(-50%,-50%)
       translateX(${x * .86}px)
-      scale(${reflectionScale})`;
+      translateY(${y * .38}px)
+      scale(${reflectScale})`;
 
 
     reflection.style.zIndex =
@@ -2043,7 +2334,7 @@ function renderCoverflow(){
 
 
  /* =========================
-    ● インジケーター
+    下のインジケーター
  ========================= */
 
  let active =
@@ -2055,7 +2346,7 @@ function renderCoverflow(){
  }
 
 
- flowDots.forEach(
+ dots.forEach(
   (dot,index) => {
 
    dot.classList.toggle(
@@ -2068,7 +2359,10 @@ function renderCoverflow(){
 
 
  /* =========================
-    水面の光もカードについてくる
+    水面の淡い光
+
+    スクリーンより少し遅れて
+    横へ流れる
  ========================= */
 
  const fractional =
@@ -2076,35 +2370,15 @@ function renderCoverflow(){
   Math.round(position);
 
 
- /*
-    カードが中央へ吸い付く途中、
-    水中光が少し遅れて流れる
- */
+ if(stageLight){
 
- const glowX =
-  -fractional * 82;
+  const lightX =
+   -fractional * 58;
 
 
- if(waterGlow){
-
-  waterGlow.style.transform =
-   `translateX(${glowX}px)
-    scaleX(${1 + Math.abs(fractional) * .14})`;
-
- }
-
-
- /*
-    波頭のハイライトも
-    ごく少しだけ追従
- */
-
- if(waveHighlight){
-
-  waveHighlight.style.transform =
-   `translateX(calc(-50% + ${glowX * .35}px))
-    perspective(500px)
-    rotateX(66deg)`;
+  stageLight.style.transform =
+   `translateX(calc(-50% + ${lightX}px))
+    scaleX(${1 + Math.abs(fractional) * .12})`;
 
  }
 
@@ -2112,7 +2386,10 @@ function renderCoverflow(){
 
 
 /* =========================
-   ぬるん追従
+   ぬるん補間
+
+   数値を小さくすると
+   さらにゆっくり
 ========================= */
 
 function animate(){
@@ -2121,14 +2398,14 @@ function animate(){
   (
    targetPosition -
    position
-  ) * .105;
+  ) * .085;
 
 
  if(
   Math.abs(
    targetPosition -
    position
-  ) < .0005
+  ) < .0004
  ){
 
   position =
@@ -2148,7 +2425,7 @@ function animate(){
 
 
 /* =========================
-   指を置く
+   指を置いた瞬間
 ========================= */
 
 scene.addEventListener(
@@ -2188,7 +2465,7 @@ scene.addEventListener(
 
 
 /* =========================
-   スワイプ
+   指で動かす
 ========================= */
 
 scene.addEventListener(
@@ -2205,26 +2482,22 @@ scene.addEventListener(
    startX;
 
 
-  if(
-   Math.abs(dx) > 5
-  ){
-
+  if(Math.abs(dx) > 5){
    moved = true;
-
   }
 
 
   /*
-     指の動きに追従
+     指そのものには比較的素直に追従
   */
 
   targetPosition =
    startPosition -
-   dx / 145;
+   dx / 138;
 
 
   /*
-     指の速度を記録
+     離した瞬間の速度
   */
 
   const now =
@@ -2258,6 +2531,9 @@ scene.addEventListener(
 
 /* =========================
    指を離す
+
+   少し流れてから
+   中央へぬるんと吸着
 ========================= */
 
 function finishDrag(){
@@ -2271,17 +2547,16 @@ function finishDrag(){
 
 
  /*
-    指を離したあとも
-    少しだけ勢いを残す
+    勢いをほんの少し残す
  */
 
  targetPosition -=
-  velocity * 1.65;
+  velocity * 1.35;
 
 
  /*
-    最後は中央へ
-    ぬるっと吸い付く
+    一番近いスクリーンへ
+    スナップ
  */
 
  targetPosition =
@@ -2305,30 +2580,29 @@ scene.addEventListener(
 
 
 /* =========================
-   スワイプ時の誤タップ防止
+   スワイプ中の誤タップ防止
 ========================= */
 
-screens.forEach(
- screen => {
+screens.forEach(screen => {
 
-  screen.addEventListener(
-   "click",
-   e => {
+ screen.addEventListener(
+  "click",
+  event => {
 
-    if(moved){
-     e.preventDefault();
-    }
-
+   if(moved){
+    event.preventDefault();
    }
-  );
 
- }
-);
+  }
+ );
+
+});
 
 
 /* =========================
-   左右のカードをタップ
-   → 中央へ移動
+   左右スクリーンをタップ
+
+   → そのスクリーンが中央へ
 ========================= */
 
 screens.forEach(
@@ -2366,23 +2640,13 @@ screens.forEach(
      currentIndex;
 
 
-    if(
-     diff >
-     total / 2
-    ){
-
+    if(diff > total / 2){
      diff -= total;
-
     }
 
 
-    if(
-     diff <
-     -total / 2
-    ){
-
+    if(diff < -total / 2){
      diff += total;
-
     }
 
 
@@ -2411,4 +2675,4 @@ animate();
 </script>
 
 </body>
-</html>
+ </html>
