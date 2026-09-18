@@ -6,180 +6,301 @@
 <title>Axlight ～アクスライト～ 鍼灸・整体院</title>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+*{
+ box-sizing:border-box;
+}
+
+html{
+ scroll-behavior:smooth;
+}
 
 body{
  margin:0;
  font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic","Meiryo",sans-serif;
- color:#13243a;
+ color:#14263c;
  background:#fff;
  line-height:1.7;
  overflow-x:hidden;
 }
 
-a{color:inherit}
+a{
+ color:inherit;
+}
 
-/* ===== 上部 ===== */
+
+/* =========================
+   上部ナビ
+========================= */
 
 header{
  position:fixed;
  top:0;
  left:0;
  right:0;
- height:60px;
+ height:58px;
  z-index:100;
  display:flex;
  align-items:center;
- justify-content:space-between;
- padding:0 18px;
- background:rgba(255,255,255,.88);
- backdrop-filter:blur(15px);
- border-bottom:1px solid rgba(80,150,210,.14);
-}
-
-.headerLogo{
- font-size:20px;
- font-weight:900;
- letter-spacing:.02em;
-}
-
-.headerLogo span{
- color:#1688ef;
+ justify-content:flex-end;
+ padding:0 16px;
+ background:rgba(255,255,255,.82);
+ backdrop-filter:blur(16px);
+ -webkit-backdrop-filter:blur(16px);
+ border-bottom:1px solid rgba(80,160,220,.12);
 }
 
 .headerReserve{
- padding:8px 16px;
+ padding:8px 17px;
  border-radius:30px;
- background:#1688ef;
- color:#fff;
  text-decoration:none;
+ color:#fff;
+ background:#148bf0;
  font-size:13px;
  font-weight:800;
+ box-shadow:0 5px 16px rgba(20,139,240,.18);
 }
 
 
-/* ===== トップ ===== */
+/* =========================
+   トップ
+========================= */
 
 .hero{
  position:relative;
  min-height:100vh;
- padding:91px 0 65px;
- text-align:center;
+ padding:92px 0 68px;
  overflow:hidden;
+ text-align:center;
+
  background:
-  radial-gradient(circle at 85% 17%,rgba(110,203,255,.30),transparent 25%),
-  radial-gradient(circle at 5% 60%,rgba(155,218,255,.22),transparent 27%),
-  linear-gradient(155deg,#ffffff 0%,#f8fcff 45%,#edf8ff 100%);
+  radial-gradient(
+   circle at 88% 13%,
+   rgba(100,205,255,.28),
+   transparent 25%
+  ),
+  radial-gradient(
+   circle at 4% 56%,
+   rgba(125,205,255,.18),
+   transparent 27%
+  ),
+  linear-gradient(
+   160deg,
+   #ffffff 0%,
+   #fbfdff 40%,
+   #eef8ff 100%
+  );
 }
+
+
+/* 淡い光 */
 
 .hero::before{
  content:"";
  position:absolute;
- width:260px;
- height:260px;
- border:1px solid rgba(32,150,235,.12);
+ width:310px;
+ height:310px;
+ top:65px;
+ right:-180px;
  border-radius:50%;
- top:110px;
- right:-145px;
+ border:1px solid rgba(45,165,240,.13);
  box-shadow:
-  0 0 50px rgba(50,170,255,.10),
-  inset 0 0 50px rgba(50,170,255,.06);
+  0 0 70px rgba(70,185,255,.11),
+  inset 0 0 60px rgba(70,185,255,.07);
 }
 
-.heroLogo{
+.hero::after{
+ content:"";
+ position:absolute;
+ width:190px;
+ height:190px;
+ left:-115px;
+ bottom:160px;
+ border-radius:50%;
+ border:1px solid rgba(45,165,240,.10);
+}
+
+
+/* =========================
+   Axlight ロゴタイプ
+========================= */
+
+.axlightLogo{
  position:relative;
  z-index:2;
- width:min(285px,72vw);
- max-height:155px;
- object-fit:contain;
- filter:drop-shadow(0 12px 22px rgba(20,100,170,.10));
+ display:inline-flex;
+ align-items:flex-end;
+ justify-content:center;
+ margin-top:4px;
+ line-height:.8;
+ font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
+ font-size:clamp(61px,18vw,91px);
+ font-weight:900;
+ letter-spacing:-.085em;
+ transform:skewX(-7deg);
+ filter:drop-shadow(0 10px 17px rgba(15,100,170,.12));
 }
+
+.axlightLogo .ax{
+ color:#14283e;
+}
+
+.axlightLogo .light{
+ color:#138bf0;
+}
+
+.axlightLogo .spark{
+ position:absolute;
+ width:42%;
+ height:3px;
+ left:46%;
+ bottom:-10px;
+ border-radius:20px;
+ background:linear-gradient(
+  90deg,
+  transparent,
+  #56c5ff,
+  #087de8,
+  transparent
+ );
+ box-shadow:0 0 12px rgba(25,160,255,.48);
+ transform:skewX(7deg);
+}
+
+
+/* 院名 */
 
 .clinicName{
- margin-top:2px;
- font-size:13px;
+ position:relative;
+ z-index:2;
+ margin-top:24px;
+ color:#536c84;
+ font-size:12px;
  font-weight:700;
- letter-spacing:.12em;
- color:#52687e;
+ letter-spacing:.14em;
 }
+
+
+/* =========================
+   メイン文字
+========================= */
 
 .heroTitle{
- margin:24px 0 0;
- font-size:clamp(35px,10vw,56px);
- line-height:1.15;
+ position:relative;
+ z-index:2;
+ margin:27px 0 0;
+ font-size:clamp(37px,10.5vw,57px);
  font-weight:900;
- letter-spacing:-.03em;
+ line-height:1.1;
+ letter-spacing:-.035em;
 }
 
-.heroTitle .blue{
- color:#1688ef;
+.heroTitle .hari{
+ color:#128af0;
+}
+
+.heroTitle .cross{
+ display:inline-block;
+ padding:0 .08em;
+ color:#9eb4c7;
+ font-weight:400;
+}
+
+.heroTitle .seitai{
+ color:#14263c;
 }
 
 .totalCare{
- margin-top:9px;
- font-size:clamp(20px,5.7vw,29px);
+ position:relative;
+ z-index:2;
+ margin-top:11px;
+ font-size:clamp(19px,5.8vw,29px);
  font-weight:900;
- letter-spacing:.08em;
-}
-
-.heroCopy{
- max-width:500px;
- margin:14px auto 23px;
- padding:0 24px;
- color:#718297;
- font-size:13px;
+ letter-spacing:.12em;
+ color:#21374e;
 }
 
 
-/* ===== 施術カルーセル ===== */
+/* 小さな青ライン */
+
+.titleLine{
+ width:48px;
+ height:3px;
+ margin:20px auto 19px;
+ border-radius:20px;
+ background:linear-gradient(90deg,#65caff,#087ee9);
+ box-shadow:0 0 12px rgba(30,160,250,.32);
+}
+
+
+/* =========================
+   カルーセル
+========================= */
 
 .carouselArea{
  position:relative;
+ z-index:2;
  width:100%;
- margin:12px auto 0;
+ margin-top:5px;
 }
 
 .carousel{
  display:flex;
  align-items:center;
- gap:15px;
+ gap:16px;
+
+ width:100%;
  overflow-x:auto;
+
  padding:
-  15px calc((100vw - min(76vw,330px))/2)
-  25px;
- scroll-snap-type:x proximity;
- -webkit-overflow-scrolling:touch;
+  18px
+  calc((100vw - min(74vw,320px))/2)
+  28px;
+
  scrollbar-width:none;
+ -webkit-overflow-scrolling:touch;
+
+ scroll-snap-type:x proximity;
 }
 
 .carousel::-webkit-scrollbar{
  display:none;
 }
 
+
+/* 各施術カード */
+
 .treatmentCard{
- flex:0 0 min(76vw,330px);
- scroll-snap-align:center;
- background:#fff;
- border-radius:27px;
+ flex:0 0 min(74vw,320px);
  overflow:hidden;
+
+ scroll-snap-align:center;
+
+ border-radius:27px;
+ background:#fff;
+
  text-decoration:none;
- color:#13243a;
- opacity:.58;
- transform:scale(.89);
+ color:#14263c;
+
+ opacity:.52;
+ transform:scale(.86);
+
+ box-shadow:
+  0 10px 30px rgba(38,88,125,.10);
+
  transition:
-  transform .5s cubic-bezier(.22,.61,.36,1),
-  opacity .5s ease,
-  box-shadow .5s ease;
- box-shadow:0 10px 28px rgba(32,91,135,.10);
+  transform .48s cubic-bezier(.16,1,.3,1),
+  opacity .48s ease,
+  box-shadow .48s ease;
 }
 
 .treatmentCard.active{
  opacity:1;
  transform:scale(1);
+
  box-shadow:
-  0 18px 42px rgba(35,110,170,.18),
-  0 0 25px rgba(75,180,255,.09);
+  0 20px 48px rgba(25,105,165,.18),
+  0 0 30px rgba(75,185,255,.10);
 }
 
 .treatmentCard img{
@@ -189,8 +310,11 @@ header{
  object-fit:cover;
 }
 
+
+/* カード下部 */
+
 .cardInfo{
- padding:13px 17px 17px;
+ padding:13px 17px 16px;
  text-align:left;
 }
 
@@ -200,47 +324,56 @@ header{
 }
 
 .cardText{
- margin-top:2px;
- color:#7a8999;
- font-size:12px;
+ margin-top:1px;
+ color:#8090a0;
+ font-size:11px;
 }
+
+
+/* ●インジケーター */
 
 .dots{
  display:flex;
- justify-content:center;
  align-items:center;
+ justify-content:center;
  gap:6px;
  height:15px;
- margin-top:2px;
+ margin-top:0;
 }
 
 .dot{
  width:6px;
  height:6px;
  border-radius:20px;
- background:#c8d9e8;
- transition:.35s ease;
+ background:#c9d9e7;
+ transition:
+  width .35s ease,
+  background .35s ease;
 }
 
 .dot.active{
- width:21px;
- background:#1688ef;
+ width:22px;
+ background:#138bf0;
 }
 
 
-/* ===== トップボタン ===== */
+/* =========================
+   トップのボタン
+========================= */
 
 .heroButtons{
+ position:relative;
+ z-index:2;
  display:flex;
  justify-content:center;
  gap:10px;
  flex-wrap:wrap;
- padding:22px 18px 0;
+ padding:23px 18px 0;
 }
 
 .heroBtn{
- min-width:145px;
- padding:12px 18px;
+ min-width:143px;
+ padding:12px 17px;
  border-radius:30px;
  text-decoration:none;
  font-size:13px;
@@ -249,18 +382,326 @@ header{
 
 .heroBtn.primary{
  color:#fff;
- background:linear-gradient(135deg,#0878e6,#23a7ff);
- box-shadow:0 9px 22px rgba(20,130,235,.25);
+ background:linear-gradient(135deg,#087ae7,#27aaff);
+ box-shadow:0 9px 23px rgba(20,135,235,.24);
 }
 
 .heroBtn.secondary{
- color:#1377cf;
+ color:#1179d4;
  background:rgba(255,255,255,.88);
- border:1px solid #b9ddf7;
+ border:1px solid #b8dcf7;
 }
 
+</style>
+</head>
 
-/* ===== 下部共通 ===== */
+<body>
+
+<header>
+ <a class="headerReserve" href="#reserve">
+  ご予約
+ </a>
+</header>
+
+<main>
+
+
+<!-- ===== TOP ===== -->
+
+<div class="hero">
+
+
+ <!-- Axlight -->
+
+ <div class="axlightLogo" aria-label="Axlight">
+  <span class="ax">Ax</span>
+  <span class="light">light</span>
+  <span class="spark"></span>
+ </div>
+
+
+ <div class="clinicName">
+  ～アクスライト～ 鍼灸・整体院
+ </div>
+
+
+ <!-- メインタイトル -->
+
+ <h1 class="heroTitle">
+
+  <span class="hari">
+   鍼灸
+  </span>
+
+  <span class="cross">
+   ×
+  </span>
+
+  <span class="seitai">
+   整体
+  </span>
+
+ </h1>
+
+
+ <div class="totalCare">
+  トータルボディケア
+ </div>
+
+
+ <div class="titleLine"></div>
+
+
+
+ <!-- ===== 施術カルーセル ===== -->
+
+ <div class="carouselArea">
+
+
+  <div class="carousel" id="carousel">
+
+
+   <!-- 鍼灸 -->
+
+   <a class="treatmentCard active" href="#hari">
+
+    <img
+     src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png"
+     alt="鍼灸"
+    >
+
+    <div class="cardInfo">
+
+     <div class="cardTitle">
+      鍼灸
+     </div>
+
+     <div class="cardText">
+      身体に合わせた鍼灸施術
+     </div>
+
+    </div>
+
+   </a>
+
+
+
+   <!-- 整体 -->
+
+   <a class="treatmentCard" href="#seitai">
+
+    <img
+     src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png"
+     alt="整体"
+    >
+
+    <div class="cardInfo">
+
+     <div class="cardTitle">
+      整体
+     </div>
+
+     <div class="cardText">
+      身体全体を整える
+     </div>
+
+    </div>
+
+   </a>
+
+
+
+   <!-- リフレクソロジー -->
+
+   <a class="treatmentCard" href="#reflex">
+
+    <img
+     src="Gemini_Generated_Image_7bms957bms957bms.png"
+     alt="リフレクソロジー"
+    >
+
+    <div class="cardInfo">
+
+     <div class="cardTitle">
+      リフレクソロジー
+     </div>
+
+     <div class="cardText">
+      足元から心地よく
+     </div>
+
+    </div>
+
+   </a>
+
+
+
+   <!-- 美容鍼 -->
+
+   <a class="treatmentCard" href="#biyou">
+
+    <img
+     src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png"
+     alt="美容鍼"
+    >
+
+    <div class="cardInfo">
+
+     <div class="cardTitle">
+      美容鍼
+     </div>
+
+     <div class="cardText">
+      美容を目的とした鍼施術
+     </div>
+
+    </div>
+
+   </a>
+
+
+
+   <!-- ドライヘッドスパ -->
+
+   <a class="treatmentCard" href="#head">
+
+    <img
+     src="Gemini_Generated_Image_cgitr8cgitr8cgit.png"
+     alt="ドライヘッドスパ"
+    >
+
+    <div class="cardInfo">
+
+     <div class="cardTitle">
+      ドライヘッドスパ
+     </div>
+
+     <div class="cardText">
+      頭部を中心としたケア
+     </div>
+
+    </div>
+
+   </a>
+
+
+
+   <!-- 筋膜トリートメント -->
+
+   <a class="treatmentCard" href="#kinmaku">
+
+    <img
+     src="Gemini_Generated_Image_g443v6g443v6g443.png"
+     alt="筋膜トリートメント"
+    >
+
+    <div class="cardInfo">
+
+     <div class="cardTitle">
+      筋膜トリートメント
+     </div>
+
+     <div class="cardText">
+      筋膜に着目したボディケア
+     </div>
+
+    </div>
+
+   </a>
+
+
+
+   <!-- ホットストーン -->
+
+   <a class="treatmentCard" href="#stone">
+
+    <img
+     src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png"
+     alt="ホットストーン"
+    >
+
+    <div class="cardInfo">
+
+     <div class="cardTitle">
+      ホットストーン
+     </div>
+
+     <div class="cardText">
+      温かなストーンを使った施術
+     </div>
+
+    </div>
+
+   </a>
+
+
+
+   <!-- カッピング -->
+
+   <a class="treatmentCard" href="#cup">
+
+    <img
+     src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png"
+     alt="カッピング"
+    >
+
+    <div class="cardInfo">
+
+     <div class="cardTitle">
+      カッピング
+     </div>
+
+     <div class="cardText">
+      吸引を利用したボディケア
+     </div>
+
+    </div>
+
+   </a>
+
+
+  </div>
+
+
+
+  <!-- ●●● -->
+
+  <div class="dots">
+
+   <span class="dot active"></span>
+   <span class="dot"></span>
+   <span class="dot"></span>
+   <span class="dot"></span>
+   <span class="dot"></span>
+   <span class="dot"></span>
+   <span class="dot"></span>
+   <span class="dot"></span>
+
+  </div>
+
+
+ </div>
+
+
+
+ <!-- トップボタン -->
+
+ <div class="heroButtons">
+
+  <a class="heroBtn primary" href="#menu">
+   施術を見る
+  </a>
+
+  <a class="heroBtn secondary" href="#reserve">
+   予約方法を見る
+  </a>
+
+ </div>
+
+
+</div><style>
+
+/* ===== 下半分 共通 ===== */
 
 section{
  padding:72px 17px;
@@ -297,7 +738,9 @@ h2{
  color:#718297;
  font-size:14px;
 }
-/* ===== 施術一覧 ===== */
+
+
+/* ===== 施術メニュー ===== */
 
 .menuGrid{
  display:grid;
@@ -310,6 +753,7 @@ h2{
  background:#fff;
  border-radius:21px;
  text-decoration:none;
+ color:#14263c;
  box-shadow:0 10px 28px rgba(30,80,120,.09);
  transition:transform .25s ease;
 }
@@ -344,6 +788,7 @@ h2{
  border:1px solid #deebf5;
  border-radius:23px;
  box-shadow:0 9px 25px rgba(30,75,110,.07);
+ scroll-margin-top:75px;
 }
 
 .infoBox h3{
@@ -358,6 +803,188 @@ h2{
  font-size:14px;
 }
 
+
+/* ===== シュッと出現 ===== */
+
+.reveal{
+ opacity:0;
+ transform:translateY(30px);
+ transition:
+  opacity .75s ease,
+  transform .75s cubic-bezier(.22,.61,.36,1);
+}
+
+.reveal.left{
+ transform:translateX(-38px);
+}
+
+.reveal.right{
+ transform:translateX(38px);
+}
+
+.reveal.show{
+ opacity:1;
+ transform:translate(0,0);
+}
+
+
+@media(min-width:760px){
+
+ .menuGrid{
+  grid-template-columns:repeat(4,1fr);
+ }
+
+ .infoGrid{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+}
+
+</style>
+
+
+<!-- ===== 施術メニュー ===== -->
+
+<section class="paleBlue" id="menu">
+
+<div class="wrap">
+
+ <div class="reveal">
+
+  <div class="sectionLabel">
+   施術メニュー
+  </div>
+
+  <h2>
+   あなたの身体に、必要なケアを。
+  </h2>
+
+  <p class="sectionLead">
+   8つの施術から、身体の状態や目的に合わせてご提案します。
+  </p>
+
+ </div>
+
+
+ <div class="menuGrid">
+
+  <a class="menuCard reveal left" href="#hari">
+   <img src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png" alt="鍼灸">
+   <div class="menuName">鍼灸</div>
+  </a>
+
+  <a class="menuCard reveal right" href="#seitai">
+   <img src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png" alt="整体">
+   <div class="menuName">整体</div>
+  </a>
+
+  <a class="menuCard reveal left" href="#reflex">
+   <img src="Gemini_Generated_Image_7bms957bms957bms.png" alt="リフレクソロジー">
+   <div class="menuName">リフレクソロジー</div>
+  </a>
+
+  <a class="menuCard reveal right" href="#biyou">
+   <img src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png" alt="美容鍼">
+   <div class="menuName">美容鍼</div>
+  </a>
+
+  <a class="menuCard reveal left" href="#head">
+   <img src="Gemini_Generated_Image_cgitr8cgitr8cgit.png" alt="ドライヘッドスパ">
+   <div class="menuName">ドライヘッドスパ</div>
+  </a>
+
+  <a class="menuCard reveal right" href="#kinmaku">
+   <img src="Gemini_Generated_Image_g443v6g443v6g443.png" alt="筋膜トリートメント">
+   <div class="menuName">筋膜トリートメント</div>
+  </a>
+
+  <a class="menuCard reveal left" href="#stone">
+   <img src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png" alt="ホットストーン">
+   <div class="menuName">ホットストーン</div>
+  </a>
+
+  <a class="menuCard reveal right" href="#cup">
+   <img src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png" alt="カッピング">
+   <div class="menuName">カッピング</div>
+  </a>
+
+ </div>
+
+</div>
+
+</section>
+
+
+<!-- ===== 施術について ===== -->
+
+<section class="paleGray">
+
+<div class="wrap">
+
+ <div class="reveal">
+
+  <div class="sectionLabel">
+   施術について
+  </div>
+
+  <h2>
+   一人ひとりの身体に合わせて。
+  </h2>
+
+  <p class="sectionLead">
+   その日の身体の状態を確認しながら施術を組み立てます。
+  </p>
+
+ </div>
+
+
+ <div class="infoGrid">
+
+  <div class="infoBox reveal left" id="hari">
+   <h3>鍼灸</h3>
+   <p>身体の状態や目的に合わせ、鍼や灸を用いて身体へアプローチします。</p>
+  </div>
+
+  <div class="infoBox reveal right" id="seitai">
+   <h3>整体</h3>
+   <p>筋肉や関節など身体全体の状態を確認し、手技を中心に身体を整えます。</p>
+  </div>
+
+  <div class="infoBox reveal left" id="reflex">
+   <h3>リフレクソロジー</h3>
+   <p>足裏や足周辺への心地よい刺激を使い、足元から身体をケアします。</p>
+  </div>
+
+  <div class="infoBox reveal right" id="biyou">
+   <h3>美容鍼</h3>
+   <p>お顔を中心に鍼を使用し、美容を目的として行う鍼施術です。</p>
+  </div>
+
+  <div class="infoBox reveal left" id="head">
+   <h3>ドライヘッドスパ</h3>
+   <p>水やオイルを使用せず、頭部を中心に手技でゆっくりとほぐします。</p>
+  </div>
+
+  <div class="infoBox reveal right" id="kinmaku">
+   <h3>筋膜トリートメント</h3>
+   <p>筋膜に着目し、身体の状態や動きに合わせて行うトリートメントです。</p>
+  </div>
+
+  <div class="infoBox reveal left" id="stone">
+   <h3>ホットストーン</h3>
+   <p>温めたストーンの心地よい温もりを利用したボディケアです。</p>
+  </div>
+
+  <div class="infoBox reveal right" id="cup">
+   <h3>カッピング</h3>
+   <p>専用のカップを皮膚へ吸着させ、吸引による刺激を利用して行う施術です。</p>
+  </div>
+
+ </div>
+
+</div>
+
+</section><style>
 
 /* ===== スタッフ・コース ===== */
 
@@ -392,6 +1019,13 @@ h2{
  font-weight:900;
 }
 
+.staffInner p,
+.courseInner p{
+ margin:5px 0;
+ color:#607387;
+ font-size:14px;
+}
+
 .timeList{
  display:flex;
  gap:7px;
@@ -414,8 +1048,8 @@ h2{
 .reserveBox{
  padding:23px;
  background:#fff;
- border-radius:25px;
  border:1px solid #dbeaf6;
+ border-radius:25px;
  box-shadow:0 12px 30px rgba(30,75,110,.08);
 }
 
@@ -426,30 +1060,6 @@ h2{
  border-left:4px solid #1688ef;
  border-radius:7px 17px 17px 7px;
  font-weight:900;
-}
-
-
-/* ===== 出現アニメーション ===== */
-
-.reveal{
- opacity:0;
- transform:translateY(30px);
- transition:
-  opacity .75s ease,
-  transform .75s cubic-bezier(.22,.61,.36,1);
-}
-
-.reveal.left{
- transform:translateX(-38px);
-}
-
-.reveal.right{
- transform:translateX(38px);
-}
-
-.reveal.show{
- opacity:1;
- transform:translate(0,0);
 }
 
 
@@ -487,17 +1097,9 @@ footer strong{
  box-shadow:0 10px 28px rgba(0,110,220,.30);
 }
 
-
-/* ===== PC表示 ===== */
-
 @media(min-width:760px){
 
- .menuGrid{
-  grid-template-columns:repeat(4,1fr);
- }
-
- .twoGrid,
- .infoGrid{
+ .twoGrid{
   grid-template-columns:repeat(2,1fr);
  }
 
@@ -509,465 +1111,7 @@ footer strong{
 
 }
 
-
-/* ===== ここまでデザイン ===== */
-
 </style>
-</head>
-
-<body>
-
-
-<header>
-
- <div class="headerLogo">
-  Ax<span>light</span>
- </div>
-
- <a class="headerReserve" href="#reserve">
-  ご予約
- </a>
-
-</header>
-
-
-<main>
-
-
-<!-- ===== トップ ===== -->
-
-<div class="hero">
-
- <img
-  class="heroLogo"
-  src="無題165.png"
-  alt="Axlight"
- >
-
- <div class="clinicName">
-  ～アクスライト～ 鍼灸・整体院
- </div>
-
- <h1 class="heroTitle">
-  <span class="blue">鍼灸</span> × 整体
- </h1>
-
- <div class="totalCare">
-  トータルボディケア
- </div>
-
- <p class="heroCopy">
-  その日の身体に、その人だけの施術を。<br>
-  鍼灸と整体を中心に、身体をトータルで整えます。
- </p>
-
-
- <!-- 施術画像スライダー -->
-
- <div class="carouselArea">
-
-  <div class="carousel" id="carousel">
-
-
-   <a class="treatmentCard active" href="#hari">
-
-    <img
-     src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png"
-     alt="鍼灸"
-    >
-
-    <div class="cardInfo">
-     <div class="cardTitle">鍼灸</div>
-     <div class="cardText">
-      身体の内側から整える
-     </div>
-    </div>
-
-   </a>
-
-
-   <a class="treatmentCard" href="#seitai">
-
-    <img
-     src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png"
-     alt="整体"
-    >
-
-    <div class="cardInfo">
-     <div class="cardTitle">整体</div>
-     <div class="cardText">
-      身体全体のバランスを整える
-     </div>
-    </div>
-
-   </a>
-
-
-   <a class="treatmentCard" href="#reflex">
-
-    <img
-     src="Gemini_Generated_Image_7bms957bms957bms.png"
-     alt="リフレクソロジー"
-    >
-
-    <div class="cardInfo">
-     <div class="cardTitle">
-      リフレクソロジー
-     </div>
-
-     <div class="cardText">
-      足元から心地よく整える
-     </div>
-    </div>
-
-   </a>
-
-
-   <a class="treatmentCard" href="#biyou">
-
-    <img
-     src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png"
-     alt="美容鍼"
-    >
-
-    <div class="cardInfo">
-     <div class="cardTitle">美容鍼</div>
-     <div class="cardText">
-      美しさを引き出す鍼施術
-     </div>
-    </div>
-
-   </a>   <a class="treatmentCard" href="#head">
-
-    <img
-     src="Gemini_Generated_Image_cgitr8cgitr8cgit.png"
-     alt="ドライヘッドスパ"
-    >
-
-    <div class="cardInfo">
-     <div class="cardTitle">ドライヘッドスパ</div>
-     <div class="cardText">
-      頭から深くほどける時間
-     </div>
-    </div>
-
-   </a>
-
-
-   <a class="treatmentCard" href="#kinmaku">
-
-    <img
-     src="Gemini_Generated_Image_g443v6g443v6g443.png"
-     alt="筋膜トリートメント"
-    >
-
-    <div class="cardInfo">
-     <div class="cardTitle">筋膜トリートメント</div>
-     <div class="cardText">
-      筋膜から身体の動きを整える
-     </div>
-    </div>
-
-   </a>
-
-
-   <a class="treatmentCard" href="#stone">
-
-    <img
-     src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png"
-     alt="ホットストーン"
-    >
-
-    <div class="cardInfo">
-     <div class="cardTitle">ホットストーン</div>
-     <div class="cardText">
-      温もりでゆっくり身体をほどく
-     </div>
-    </div>
-
-   </a>
-
-
-   <a class="treatmentCard" href="#cup">
-
-    <img
-     src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png"
-     alt="カッピング"
-    >
-
-    <div class="cardInfo">
-     <div class="cardTitle">カッピング</div>
-     <div class="cardText">
-      吸引刺激を使ったボディケア
-     </div>
-    </div>
-
-   </a>
-
-
-  </div>
-
-
-  <div class="dots" id="dots">
-   <span class="dot active"></span>
-   <span class="dot"></span>
-   <span class="dot"></span>
-   <span class="dot"></span>
-   <span class="dot"></span>
-   <span class="dot"></span>
-   <span class="dot"></span>
-   <span class="dot"></span>
-  </div>
-
- </div>
-
-
- <div class="heroButtons">
-
-  <a class="heroBtn primary" href="#reserve">
-   LINEで予約する
-  </a>
-
-  <a class="heroBtn secondary" href="#menu">
-   施術メニューを見る
-  </a>
-
- </div>
-
-</div>
-
-
-
-<!-- ===== 施術メニュー ===== -->
-
-<section class="paleBlue" id="menu">
-
-<div class="wrap">
-
- <div class="reveal">
-
-  <div class="sectionLabel">
-   施術メニュー
-  </div>
-
-  <h2>
-   あなたの身体に、必要なケアを。
-  </h2>
-
-  <p class="sectionLead">
-   8つの施術から、身体の状態や目的に合わせてご提案します。
-  </p>
-
- </div>
-
-
- <div class="menuGrid">
-
-
-  <a class="menuCard reveal left" href="#hari">
-
-   <img
-    src="Gemini_Generated_Image_5n4pnb5n4pnb5n4p.png"
-    alt="鍼灸"
-   >
-
-   <div class="menuName">
-    鍼灸
-   </div>
-
-  </a>
-
-
-  <a class="menuCard reveal right" href="#seitai">
-
-   <img
-    src="Gemini_Generated_Image_6vhgli6vhgli6vhg.png"
-    alt="整体"
-   >
-
-   <div class="menuName">
-    整体
-   </div>
-
-  </a>
-
-
-  <a class="menuCard reveal left" href="#reflex">
-
-   <img
-    src="Gemini_Generated_Image_7bms957bms957bms.png"
-    alt="リフレクソロジー"
-   >
-
-   <div class="menuName">
-    リフレクソロジー
-   </div>
-
-  </a>
-
-
-  <a class="menuCard reveal right" href="#biyou">
-
-   <img
-    src="Gemini_Generated_Image_7cwyaf7cwyaf7cwy.png"
-    alt="美容鍼"
-   >
-
-   <div class="menuName">
-    美容鍼
-   </div>
-
-  </a>
-
-
-  <a class="menuCard reveal left" href="#head">
-
-   <img
-    src="Gemini_Generated_Image_cgitr8cgitr8cgit.png"
-    alt="ドライヘッドスパ"
-   >
-
-   <div class="menuName">
-    ドライヘッドスパ
-   </div>
-
-  </a>
-
-
-  <a class="menuCard reveal right" href="#kinmaku">
-
-   <img
-    src="Gemini_Generated_Image_g443v6g443v6g443.png"
-    alt="筋膜トリートメント"
-   >
-
-   <div class="menuName">
-    筋膜トリートメント
-   </div>
-
-  </a>
-
-
-  <a class="menuCard reveal left" href="#stone">
-
-   <img
-    src="Gemini_Generated_Image_rxu6l5rxu6l5rxu6.png"
-    alt="ホットストーン"
-   >
-
-   <div class="menuName">
-    ホットストーン
-   </div>
-
-  </a>
-
-
-  <a class="menuCard reveal right" href="#cup">
-
-   <img
-    src="Gemini_Generated_Image_t9c9sdt9c9sdt9c9.png"
-    alt="カッピング"
-   >
-
-   <div class="menuName">
-    カッピング
-   </div>
-
-  </a>
-
-
- </div>
-
-</div>
-
-</section>
-<!-- ===== 施術について ===== -->
-
-<section class="paleGray">
-
-<div class="wrap">
-
- <div class="reveal">
-  <div class="sectionLabel">施術について</div>
-  <h2>一人ひとりの身体に合わせて。</h2>
-  <p class="sectionLead">
-   同じ症状でも、身体の状態は一人ひとり違います。
-   Axlightでは、その日の状態を確認しながら施術を組み立てます。
-  </p>
- </div>
-
-
- <div class="infoGrid">
-
-  <div class="infoBox reveal left" id="hari">
-   <h3>鍼灸</h3>
-   <p>
-    身体の状態や目的に合わせ、鍼や灸を用いて身体へアプローチします。
-   </p>
-  </div>
-
-
-  <div class="infoBox reveal right" id="seitai">
-   <h3>整体</h3>
-   <p>
-    筋肉や関節など身体全体の状態を確認し、手技を中心に身体を整えます。
-   </p>
-  </div>
-
-
-  <div class="infoBox reveal left" id="reflex">
-   <h3>リフレクソロジー</h3>
-   <p>
-    足裏や足周辺への心地よい刺激を使い、足元から身体をケアします。
-   </p>
-  </div>
-
-
-  <div class="infoBox reveal right" id="biyou">
-   <h3>美容鍼</h3>
-   <p>
-    お顔を中心に鍼を使用し、美容を目的として行う鍼施術です。
-   </p>
-  </div>
-
-
-  <div class="infoBox reveal left" id="head">
-   <h3>ドライヘッドスパ</h3>
-   <p>
-    水やオイルを使用せず、頭部を中心に手技でゆっくりとほぐしていきます。
-   </p>
-  </div>
-
-
-  <div class="infoBox reveal right" id="kinmaku">
-   <h3>筋膜トリートメント</h3>
-   <p>
-    筋膜に着目し、身体の状態や動きに合わせて行うトリートメントです。
-   </p>
-  </div>
-
-
-  <div class="infoBox reveal left" id="stone">
-   <h3>ホットストーン</h3>
-   <p>
-    温めたストーンの心地よい温もりを利用したボディケアです。
-   </p>
-  </div>
-
-
-  <div class="infoBox reveal right" id="cup">
-   <h3>カッピング</h3>
-   <p>
-    専用のカップを皮膚へ吸着させ、吸引による刺激を利用して行う施術です。
-   </p>
-  </div>
-
- </div>
-
-</div>
-
-</section>
-
 
 
 <!-- ===== スタッフ ===== -->
@@ -987,14 +1131,13 @@ footer strong{
   </h2>
 
   <p class="sectionLead">
-   鍼灸と整体、それぞれの専門性を活かして身体をサポートします。
+   鍼灸と整体、それぞれの専門性を活かして施術します。
   </p>
 
  </div>
 
 
  <div class="twoGrid">
-
 
   <div class="staffCard reveal left">
 
@@ -1037,13 +1180,11 @@ footer strong{
 
   </div>
 
-
  </div>
 
 </div>
 
 </section>
-
 
 
 <!-- ===== コース ===== -->
@@ -1063,14 +1204,13 @@ footer strong{
   </h2>
 
   <p class="sectionLead">
-   通常メニューと特別技術メニューからお選びいただけます。
+   通常メニューと特別技術メニューをご用意しています。
   </p>
 
  </div>
 
 
  <div class="twoGrid">
-
 
   <div class="courseCard reveal left">
 
@@ -1081,7 +1221,7 @@ footer strong{
     </div>
 
     <h3>
-     身体に合わせたトータルケア
+     トータルボディケア
     </h3>
 
     <p>
@@ -1109,11 +1249,11 @@ footer strong{
     </div>
 
     <h3>
-     専門技術を組み合わせたケア
+     専門技術メニュー
     </h3>
 
     <p>
-     より専門的な技術を組み合わせて行う特別メニューです。
+     専門技術を組み合わせて行う特別メニューです。
     </p>
 
     <div class="timeList">
@@ -1127,12 +1267,13 @@ footer strong{
 
   </div>
 
-
  </div>
 
 </div>
 
 </section>
+
+
 <!-- ===== LINE予約 ===== -->
 
 <section class="paleGray" id="reserve">
@@ -1146,7 +1287,7 @@ footer strong{
   </div>
 
   <h2>
-   ご予約はLINEから。
+   ご予約について
   </h2>
 
   <p class="sectionLead">
@@ -1164,10 +1305,14 @@ footer strong{
   </p>
 
   <div class="reserveImportant">
+
    メニューページを一番下まで進み、<br><br>
+
    「Axlight ～アクスライト～<br>
    鍼灸・整体院入口」<br><br>
+
    をタップしてください。
+
   </div>
 
   <p>
@@ -1180,7 +1325,6 @@ footer strong{
 </div>
 
 </section>
-
 
 
 <!-- ===== 店舗情報 ===== -->
@@ -1238,86 +1382,59 @@ footer strong{
 
 </section>
 
-
-</main>
-
-
-
-<!-- ===== フッター ===== -->
-
-<footer>
-
- <strong>
-  Axlight
- </strong>
-
+</main><footer>
+ <strong>Axlight</strong>
  ～アクスライト～ 鍼灸・整体院
-
 </footer>
 
-
-
-<!-- ===== 下の固定予約ボタン ===== -->
-
 <a class="fixedReserve" href="#reserve">
- LINEで予約する
+ LINE予約方法を確認する
 </a>
-
-
 
 <script>
 
-/* ===== 下のカードをふわっと表示 ===== */
+/* 下のコンテンツをシュッと表示 */
 
-const revealItems =
- document.querySelectorAll(".reveal");
+const revealItems = document.querySelectorAll(".reveal");
 
-const observer =
- new IntersectionObserver(entries => {
+const revealObserver = new IntersectionObserver(entries => {
 
-  entries.forEach(entry => {
+ entries.forEach(entry => {
 
-   if(entry.isIntersecting){
+  if(entry.isIntersecting){
+   entry.target.classList.add("show");
+   revealObserver.unobserve(entry.target);
+  }
 
-    entry.target.classList.add("show");
-    observer.unobserve(entry.target);
-
-   }
-
-  });
-
- },{
-  threshold:.12
  });
 
+},{
+ threshold:.12
+});
+
 revealItems.forEach(item => {
- observer.observe(item);
+ revealObserver.observe(item);
 });
 
 
+/* =========================
+   トップカルーセル
+========================= */
 
-/* ===== トップカルーセル ===== */
+const carousel = document.getElementById("carousel");
+const cards = [...carousel.querySelectorAll(".treatmentCard")];
+const dots = [...document.querySelectorAll(".dot")];
 
-const carousel =
- document.getElementById("carousel");
-
-const cards =
- [...carousel.querySelectorAll(".treatmentCard")];
-
-const dots =
- [...document.querySelectorAll(".dot")];
+let ticking = false;
 
 
-/* 中央に一番近いカードを探す */
+/* 中央との距離に応じて
+   大きさ・透明度を連続変化させる */
 
-function updateCarousel(){
+function animateCarousel(){
 
- const carouselRect =
-  carousel.getBoundingClientRect();
-
- const center =
-  carouselRect.left +
-  carouselRect.width / 2;
+ const carouselRect = carousel.getBoundingClientRect();
+ const center = carouselRect.left + carouselRect.width / 2;
 
  let closestIndex = 0;
  let closestDistance = Infinity;
@@ -1325,26 +1442,40 @@ function updateCarousel(){
 
  cards.forEach((card,index) => {
 
-  const rect =
-   card.getBoundingClientRect();
+  const rect = card.getBoundingClientRect();
+  const cardCenter = rect.left + rect.width / 2;
 
-  const cardCenter =
-   rect.left +
-   rect.width / 2;
-
-  const distance =
-   Math.abs(center - cardCenter);
-
+  const distance = Math.abs(center - cardCenter);
 
   if(distance < closestDistance){
-
    closestDistance = distance;
    closestIndex = index;
-
   }
+
+
+  /* ここが「ぬるん」の部分 */
+
+  const maxDistance = carouselRect.width * .72;
+
+  const progress =
+   Math.min(distance / maxDistance,1);
+
+  const scale =
+   1 - progress * .13;
+
+  const opacity =
+   1 - progress * .47;
+
+  card.style.transform =
+   `scale(${scale})`;
+
+  card.style.opacity =
+   opacity;
 
  });
 
+
+ /* 一番中央のカード */
 
  cards.forEach((card,index) => {
 
@@ -1356,6 +1487,8 @@ function updateCarousel(){
  });
 
 
+ /* ●を連動 */
+
  dots.forEach((dot,index) => {
 
   dot.classList.toggle(
@@ -1365,37 +1498,53 @@ function updateCarousel(){
 
  });
 
+
+ ticking = false;
+
 }
 
 
-/* 指で動かしている最中も滑らかに変化 */
+/* 指で動かしている間も毎フレーム更新 */
 
-carousel.addEventListener(
- "scroll",
- updateCarousel,
- {passive:true}
-);
+carousel.addEventListener("scroll",() => {
+
+ if(!ticking){
+
+  requestAnimationFrame(
+   animateCarousel
+  );
+
+  ticking = true;
+
+ }
+
+},{
+ passive:true
+});
 
 
-/* 最初の表示 */
+/* 初期表示 */
 
 window.addEventListener("load",() => {
 
  requestAnimationFrame(() => {
 
-  updateCarousel();
+  animateCarousel();
 
  });
 
 });
 
 
-/* 画面サイズ変更時 */
+/* 画面サイズ変更 */
 
-window.addEventListener(
- "resize",
- updateCarousel
-);
+window.addEventListener("resize",() => {
+
+ requestAnimationFrame(
+  animateCarousel
+ );
+
+});
 
 </script>
 
